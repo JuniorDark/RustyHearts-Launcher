@@ -40,8 +40,8 @@ The default URL for the api can be changed on IniFile.cs
 ### Client region
 The client region can be set on Service on config.ini 
 
-**usa** PWE - Full api support
-**chn** Xunlei - Only launcher support
+* **usa** (PWE) - Full api support
+* **chn** (Xunlei) - Only launcher support
 
 ### Launcher self-update
 
