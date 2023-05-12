@@ -1,0 +1,44 @@
+name: Release
+on:
+  workflow_dispatch:
+  release:
+    types: [created]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '7.0.x'
+      - name: Get version from .csproj file
+        id: version
+
+        run: |
+          echo "::set-output name=version::$(grep -m1 -o '<FileVersion>[^<]*' RHLauncher.csproj | sed 's/<FileVersion>//')"
+      - name: Build
+        run: dotnet publish --configuration Release --self-contained false --runtime win-x86 /p:PublishSingleFile=true
+      - name: Zip output file
+        run: Compress-Archive -Path ./bin/Release/net7.0-windows7.0/win-x86/publish/Launcher.exe -DestinationPath Launcher.zip
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ steps.version.outputs.version }}
+          release_name: v${{ steps.version.outputs.version }}
+          body: Automated release created by GitHub Actions.
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./Launcher.zip
+          asset_name: Launcher.zip
+          asset_content_type: application/zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

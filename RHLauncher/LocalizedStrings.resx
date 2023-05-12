@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Account" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="AccountNotFound" xml:space="preserve">
+    <value>A account with this email was not found</value>
+  </data>
+  <data name="AlreadyExecute" xml:space="preserve">
+    <value>rustyhearts.exe is already running.</value>
+  </data>
+  <data name="Cancelling" xml:space="preserve">
+    <value>Cancelling</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="CheckBoxAutoLogin" xml:space="preserve">
+    <value>Auto Login</value>
+  </data>
+  <data name="CheckBoxSaveUser" xml:space="preserve">
+    <value>Remember Username</value>
+  </data>
+  <data name="Checking" xml:space="preserve">
+    <value>Checking</value>
+  </data>
+  <data name="CodeDescLabel" xml:space="preserve">
+    <value>Insert the verification code</value>
+  </data>
+  <data name="CodeDescLabelInvalid" xml:space="preserve">
+    <value>Invalid Verification Code format</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="ConfirmUninstall" xml:space="preserve">
+    <value>Confirm Uninstall</value>
+  </data>
+  <data name="ConfirmUninstallText" xml:space="preserve">
+    <value>Are you sure you want to uninstall and delete the install directory?</value>
+  </data>
+  <data name="DescLabelS2Email" xml:space="preserve">
+    <value>The verification email has been sent to</value>
+  </data>
+  <data name="Downloading" xml:space="preserve">
+    <value>Downloading</value>
+  </data>
+  <data name="EmailDescLabelEmpty" xml:space="preserve">
+    <value>Email cannot be empty</value>
+  </data>
+  <data name="EmailDescLabelInvalid" xml:space="preserve">
+    <value>Invalid email address</value>
+  </data>
+  <data name="EnterEmail" xml:space="preserve">
+    <value>Enter your Email address</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ExpiredVerificationCode" xml:space="preserve">
+    <value>This verification code has expired, please request a new one.</value>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  <data name="ForgotPwdLabel" xml:space="preserve">
+    <value>Forgot Password?</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+    <value>Install</value>
+  </data>
+  <data name="InvalidVerificationCode" xml:space="preserve">
+    <value>Invalid Verification Code</value>
+  </data>
+  <data name="LabelNews" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="Launch" xml:space="preserve">
+    <value>Launch</value>
+  </data>
+  <data name="LauncherUpdateCheckFailed" xml:space="preserve">
+    <value>Error checking for launcher update: </value>
+  </data>
+  <data name="LauncherUpdateFailed" xml:space="preserve">
+    <value>Error downloading launcher update: </value>
+  </data>
+  <data name="LauncherUpdateSuccess" xml:space="preserve">
+    <value>Launcher updated successfully to version </value>
+  </data>
+  <data name="LauncherUpdateText" xml:space="preserve">
+    <value>A new version of the launcher is available. It will be downloaded and installed automatically.</value>
+  </data>
+  <data name="Launching" xml:space="preserve">
+    <value>Launching</value>
+  </data>
+  <data name="LoginInfoTitle" xml:space="preserve">
+    <value>Login Info</value>
+  </data>
+  <data name="LoginInsertPassword" xml:space="preserve">
+    <value>Please insert the password.</value>
+  </data>
+  <data name="LoginInsertUsername" xml:space="preserve">
+    <value>Please insert the username.</value>
+  </data>
+  <data name="LoginInvalidCredentials" xml:space="preserve">
+    <value>Invalid username or password.</value>
+  </data>
+  <data name="LoginInvalidUsernameFormat" xml:space="preserve">
+    <value>Invalid username format.</value>
+  </data>
+  <data name="LoginLocked" xml:space="preserve">
+    <value>Your account is locked. Please contact customer support.</value>
+  </data>
+  <data name="LoginTooManyAttempts" xml:space="preserve">
+    <value>Too many login attempts. Please try again later.</value>
+  </data>
+  <data name="LoginWindowTitle" xml:space="preserve">
+    <value>Login Window</value>
+  </data>
+  <data name="LogoutText" xml:space="preserve">
+    <value>Are you sure you want to logout?</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Enter the new password</value>
+  </data>
+  <data name="NewPasswordDesc" xml:space="preserve">
+    <value>6-16 characters</value>
+  </data>
+  <data name="Packing" xml:space="preserve">
+    <value>Packing</value>
+  </data>
+  <data name="PasswordChanged" xml:space="preserve">
+    <value>Password changed successfully! Please log in again.</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PwdConfirmDescLabelEmpty" xml:space="preserve">
+    <value>Confirm Password cannot be empty!</value>
+  </data>
+  <data name="PwdConfirmDescLabelMatch" xml:space="preserve">
+    <value>Passwords do not match!</value>
+  </data>
+  <data name="PwdDescLabelCriteria" xml:space="preserve">
+    <value>Password must have at least one uppercase, one lowercase letter, and one number</value>
+  </data>
+  <data name="PwdDescLabelEmpty" xml:space="preserve">
+    <value>Password cannot be empty!</value>
+  </data>
+  <data name="PwdDescLabelSize" xml:space="preserve">
+    <value>Password must be between 6-16 characters!</value>
+  </data>
+  <data name="PwdStrengthLabelMedium" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="PwdStrengthLabelStrong" xml:space="preserve">
+    <value>Strong</value>
+  </data>
+  <data name="PwdStrengthLabelWeak" xml:space="preserve">
+    <value>Weak</value>
+  </data>
+  <data name="RepeatPassword" xml:space="preserve">
+    <value>Re-enter the new password</value>
+  </data>
+  <data name="RepeatPasswordDesc" xml:space="preserve">
+    <value>Repeat the password</value>
+  </data>
+  <data name="Return" xml:space="preserve">
+    <value>&lt; Return</value>
+  </data>
+  <data name="Running" xml:space="preserve">
+    <value>Running</value>
+  </data>
+  <data name="RustyHearts" xml:space="preserve">
+    <value>Rusty Hearts</value>
+  </data>
+  <data name="rustyheartsconfig" xml:space="preserve">
+    <value>Could not find rustyheartsconfig.exe</value>
+  </data>
+  <data name="SamePassword" xml:space="preserve">
+    <value>Same password. Please use another password.</value>
+  </data>
+  <data name="ServerOffline" xml:space="preserve">
+    <value>Cannot connect to the game server.</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="Uninstall" xml:space="preserve">
+    <value>Uninstall</value>
+  </data>
+  <data name="Uninstalling" xml:space="preserve">
+    <value>Uninstalling</value>
+  </data>
+  <data name="UninstallText" xml:space="preserve">
+    <value>Uninstall complete.</value>
+  </data>
+  <data name="Unpacking" xml:space="preserve">
+    <value>Unpacking</value>
+  </data>
+  <data name="UnsupportedService" xml:space="preserve">
+    <value>Unsupported client region.</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="UpdateCheckError" xml:space="preserve">
+    <value>An error occurred while checking for updates.</value>
+  </data>
+  <data name="UpdateDownloadError" xml:space="preserve">
+    <value>An error occurred while downloading updates.</value>
+  </data>
+  <data name="Updating" xml:space="preserve">
+    <value>Updating</value>
+  </data>
+  <data name="UsernameDescLabelEmpty" xml:space="preserve">
+    <value>Name cannot be empty</value>
+  </data>
+  <data name="UsernameDescLabelInvalid" xml:space="preserve">
+    <value>Name must be alphanumeric with at least one letter</value>
+  </data>
+  <data name="UsernameDescLabelSize" xml:space="preserve">
+    <value>Username must be between 6-16 characters</value>
+  </data>
+  <data name="UsernameLabel" xml:space="preserve">
+    <value>Username/Email</value>
+  </data>
+  <data name="VerificationCode" xml:space="preserve">
+    <value>Verification Code</value>
+  </data>
+  <data name="VerificationEmailSent" xml:space="preserve">
+    <value>The verificaton email has been sent to</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+</root>
