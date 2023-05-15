@@ -5,7 +5,8 @@
 # Rusty Hearts Launcher
 [![License](https://img.shields.io/github/license/JuniorDark/RustyHearts-Launcher?color=brown)](LICENSE)
 [![Build](https://github.com/JuniorDark/RustyHearts-Launcher/actions/workflows/build.yml/badge.svg)](https://github.com/JuniorDark/RustyHearts-Launcher/actions/workflows/build.yml)
-
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/JuniorDark/RustyHearts-Launcher)](https://github.com/JuniorDark/RustyHearts-Launcher/releases/latest) <a href="https://github.com/JuniorDark/RustyHearts-Launcher/releases">
+ 
 ## Introduction
 Rusty Hearts Launcher is a custom launcher for the Rusty Hearts game client. It provides several features, including self-updating, automatic game updates, account registration, and a news window.
 
