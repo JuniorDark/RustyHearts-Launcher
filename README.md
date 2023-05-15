@@ -3,7 +3,7 @@
 ![RHLauncher logo](rhlauncher.png)
 
 # Rusty Hearts Launcher
-[![License](https://img.shields.io/github/license/JuniorDark/RustyHearts-Launcher?color=brown)](LICENSE)
+[![License](https://img.shields.io/github/license/JuniorDark/RustyHearts-Launcher?color=green)](LICENSE)
 [![Build](https://github.com/JuniorDark/RustyHearts-Launcher/actions/workflows/build.yml/badge.svg)](https://github.com/JuniorDark/RustyHearts-Launcher/actions/workflows/build.yml)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/JuniorDark/RustyHearts-Launcher)](https://github.com/JuniorDark/RustyHearts-Launcher/releases/latest) <a href="https://github.com/JuniorDark/RustyHearts-Launcher/releases">
  
