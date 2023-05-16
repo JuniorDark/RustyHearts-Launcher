@@ -282,7 +282,7 @@ namespace RHLauncher
             try
             {
                 using HttpClient client = new();
-                HttpResponseMessage response = await client.GetAsync(Configuration.Default.GateStatusUrl);
+                using HttpResponseMessage response = await client.GetAsync(Configuration.Default.GateStatusUrl);
                 response.EnsureSuccessStatusCode();
                 string json = await response.Content.ReadAsStringAsync();
                 dynamic result = JsonConvert.DeserializeObject(json);
@@ -554,10 +554,6 @@ namespace RHLauncher
                     {
                         HandleException(ex);
                     }
-                }
-                else if (result == DialogResult.No)
-                {
-                    DialogResult = DialogResult.Cancel;
                 }
             }
         }
