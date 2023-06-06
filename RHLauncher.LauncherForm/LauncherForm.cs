@@ -145,6 +145,11 @@ namespace RHLauncher
                         LaunchButton.Click -= LaunchGameButton_Click;
                         LaunchButton.Click += LaunchGameButton_Click;
                         break;
+                    case UpdateState.Error:
+                        LaunchButton.Text = LocalizedStrings.Launch;
+                        LaunchButton.Click -= LaunchGameButton_Click;
+                        LaunchButton.Click += LaunchGameButton_Click;
+                        break;
                 }
             }
             catch (Exception ex)

@@ -17,7 +17,7 @@ namespace RHLauncher
             try
             {
                 using HttpClient client = new();
-                HttpResponseMessage response = await client.GetAsync(LauncherVersionUrl);
+                using HttpResponseMessage response = await client.GetAsync(LauncherVersionUrl);
                 response.EnsureSuccessStatusCode();
                 string json = await response.Content.ReadAsStringAsync();
                 dynamic result = JsonConvert.DeserializeObject(json);

@@ -19,15 +19,31 @@ namespace RHLauncher.RHLauncher.Helper
             string md5 = CalculateMD5(service);
 
             string serviceDatPath = Path.Combine(_installDirectory, "Service.dat");
-            string[] lines = File.ReadAllLines(serviceDatPath);
 
-            string currentMd5 = lines[0];
-            string currentService = string.Join(Environment.NewLine, lines, 1, lines.Length - 1);
-
-            if (currentMd5 != md5)
+            try
             {
-                lines[0] = md5;
-                File.WriteAllLines(serviceDatPath, lines);
+                if (File.Exists(serviceDatPath))
+                {
+                    string[] lines = File.ReadAllLines(serviceDatPath);
+
+                    string currentMd5 = lines[0];
+                    string currentService = string.Join(Environment.NewLine, lines, 1, lines.Length - 1);
+
+                    if (currentMd5 != md5)
+                    {
+                        lines[0] = md5;
+                        File.WriteAllLines(serviceDatPath, lines);
+                    }
+                }
+                else
+                {
+                    MsgBoxForm.Show("Service.dat file does not exist. Please check if the Install Directory is correct.", LocalizedStrings.Error);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MsgBoxForm.Show("An error occurred while updating service: " + ex.Message, LocalizedStrings.Error);
             }
         }
 

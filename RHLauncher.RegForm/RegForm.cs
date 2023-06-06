@@ -37,7 +37,7 @@ namespace RHLauncher
         private async Task<string> SendEmailRequestAsync()
         {
             using HttpClient client = new();
-            HttpResponseMessage response = await client.PostAsync(SendCodeUrl, new FormUrlEncodedContent(new[]
+            using HttpResponseMessage response = await client.PostAsync(SendCodeUrl, new FormUrlEncodedContent(new[]
             {
             new KeyValuePair<string, string>("email", EmailTextBox.Text),
 
@@ -99,7 +99,7 @@ namespace RHLauncher
         private async Task<string> VerifyCodeSendRequestAsync()
         {
             using HttpClient client = new();
-            HttpResponseMessage response = await client.PostAsync(VerifyCodeUrl, new FormUrlEncodedContent(new[]
+            using HttpResponseMessage response = await client.PostAsync(VerifyCodeUrl, new FormUrlEncodedContent(new[]
             {
             new KeyValuePair<string, string>("email", EmailTextBox.Text),
             new KeyValuePair<string, string>("verification_code", CodeTextBox.Text),
@@ -113,7 +113,7 @@ namespace RHLauncher
         private async Task<string> SendRequestAsync()
         {
             using HttpClient client = new();
-            HttpResponseMessage response = await client.PostAsync(RegisterUrl, new FormUrlEncodedContent(new[]
+            using HttpResponseMessage response = await client.PostAsync(RegisterUrl, new FormUrlEncodedContent(new[]
             {
             new KeyValuePair<string, string>("windyCode", NameTextBox.Text),
             new KeyValuePair<string, string>("email", EmailTextBox.Text),

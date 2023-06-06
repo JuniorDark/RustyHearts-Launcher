@@ -19,7 +19,7 @@
     <AssemblyName>Launcher</AssemblyName>
     <Description>Rusty Hearts Launcher</Description>
     <PlatformTarget>x86</PlatformTarget>
-    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <AssemblyVersion>1.0.1</AssemblyVersion>
     <FileVersion>1.0.0</FileVersion>
   </PropertyGroup>
 
