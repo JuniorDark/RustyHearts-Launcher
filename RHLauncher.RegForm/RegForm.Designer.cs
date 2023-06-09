@@ -471,7 +471,7 @@
             // NamePictureBox
             // 
             NamePictureBox.BackColor = Color.Transparent;
-            NamePictureBox.Location = new Point(383, 151);
+            NamePictureBox.Location = new Point(379, 151);
             NamePictureBox.Name = "NamePictureBox";
             NamePictureBox.Size = new Size(14, 14);
             NamePictureBox.TabIndex = 39;
@@ -494,7 +494,7 @@
             NameDescLabel.Font = new Font("Segoe UI", 8F, FontStyle.Bold, GraphicsUnit.Point);
             NameDescLabel.ForeColor = Color.White;
             NameDescLabel.ImeMode = ImeMode.NoControl;
-            NameDescLabel.Location = new Point(399, 152);
+            NameDescLabel.Location = new Point(395, 152);
             NameDescLabel.MaximumSize = new Size(250, 0);
             NameDescLabel.Name = "NameDescLabel";
             NameDescLabel.Size = new Size(158, 13);

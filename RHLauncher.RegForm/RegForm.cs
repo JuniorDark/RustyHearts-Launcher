@@ -15,9 +15,6 @@ namespace RHLauncher
         private readonly System.Windows.Forms.Timer resendTimer = new();
         private int secondsLeft = 60;
 
-        [GeneratedRegex("^(?=.*[a-zA-Z])[a-zA-Z0-9]+$")]
-        private static partial Regex MyRegex();
-
         public RegForm()
         {
             InitializeComponent();
@@ -271,7 +268,9 @@ namespace RHLauncher
         private bool NameTextBoxValid = false;
         private void NameTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(NameTextBox.Text) || NameTextBox.Text.Length < 6 || NameTextBox.Text.Length > 16 || !MyRegex().IsMatch(NameTextBox.Text))
+            Regex nameregex = new("^(?=.*[a-z])[a-z0-9]+$");
+
+            if (string.IsNullOrEmpty(NameTextBox.Text) || NameTextBox.Text.Length < 6 || NameTextBox.Text.Length > 16 || !nameregex.IsMatch(NameTextBox.Text) || HasUppercase(NameTextBox.Text))
             {
                 if (string.IsNullOrEmpty(NameTextBox.Text))
                 {
@@ -287,7 +286,14 @@ namespace RHLauncher
                     NamePictureBox.Image = imageListTips.Images[0];
                     NameTextBoxValid = false;
                 }
-                else if (!MyRegex().IsMatch(NameTextBox.Text))
+                else if (HasUppercase(NameTextBox.Text))
+                {
+                    NameDescLabel.Text = LocalizedStrings.UsernameDescLabelUppercase;
+                    NameDescLabel.ForeColor = Color.Red;
+                    NamePictureBox.Image = imageListTips.Images[0];
+                    NameTextBoxValid = false;
+                }
+                else if (!nameregex.IsMatch(NameTextBox.Text))
                 {
                     NameDescLabel.Text = LocalizedStrings.UsernameDescLabelInvalid;
                     NameDescLabel.ForeColor = Color.Red;
@@ -302,6 +308,11 @@ namespace RHLauncher
                 NameTextBoxValid = true;
             }
             CheckFormS2Validity();
+        }
+
+        private static bool HasUppercase(string text)
+        {
+            return text.Any(char.IsUpper);
         }
 
         private bool PasswordTextBoxValid = false;

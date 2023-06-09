@@ -19,8 +19,8 @@
     <AssemblyName>Launcher</AssemblyName>
     <Description>Rusty Hearts Launcher</Description>
     <PlatformTarget>x86</PlatformTarget>
-    <AssemblyVersion>1.0.1</AssemblyVersion>
-    <FileVersion>1.0.1</FileVersion>
+    <AssemblyVersion>1.0.2</AssemblyVersion>
+    <FileVersion>1.0.2</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -30,10 +30,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DebugType>full</DebugType>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="RHLauncher.LauncherForm\LauncherForm.resx~RF3c0dbfb.TMP" />
-  </ItemGroup>
 
   <ItemGroup>
     <Content Include="Resources\rhicon.ico" />

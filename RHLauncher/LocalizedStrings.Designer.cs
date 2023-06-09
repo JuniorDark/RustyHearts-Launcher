@@ -736,6 +736,15 @@ namespace RHLauncher.RHLauncher {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Username must not contain uppercase letters. Please use only lowercase letters and digits..
+        /// </summary>
+        public static string UsernameDescLabelUppercase {
+            get {
+                return ResourceManager.GetString("UsernameDescLabelUppercase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Username/Email.
         /// </summary>
         public static string UsernameLabel {

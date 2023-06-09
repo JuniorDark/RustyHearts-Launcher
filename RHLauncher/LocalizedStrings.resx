@@ -342,6 +342,9 @@
   <data name="UsernameDescLabelSize" xml:space="preserve">
     <value>Username must be between 6-16 characters</value>
   </data>
+  <data name="UsernameDescLabelUppercase" xml:space="preserve">
+    <value>Username must not contain uppercase letters. Please use only lowercase letters and digits.</value>
+  </data>
   <data name="UsernameLabel" xml:space="preserve">
     <value>Username/Email</value>
   </data>
