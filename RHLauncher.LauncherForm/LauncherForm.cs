@@ -460,18 +460,23 @@ namespace RHLauncher
 
         public void Logout()
         {
-            LoginForm? loginForm = Application.OpenForms.OfType<LoginForm>().FirstOrDefault();
+            LoginForm loginForm = Application.OpenForms.OfType<LoginForm>().FirstOrDefault();
             if (loginForm != null)
             {
+                // Close the current form before restarting
+                Close();
+
+                // Restart the application
                 Application.Restart();
             }
             else
             {
-                LoginForm newLoginForm = new();
+                LoginForm newLoginForm = new LoginForm();
                 newLoginForm.Show();
                 Close();
             }
         }
+
 
         private async void UpdateCheckButton_Click(object sender, EventArgs e)
         {

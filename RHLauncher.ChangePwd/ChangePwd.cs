@@ -63,7 +63,9 @@ namespace RHLauncher
 
         private void HandleSendEmailResponse(string response)
         {
-            switch (response)
+            Invoke((MethodInvoker)(() =>
+            {
+                switch (response)
             {
                 case "EmailSent":
                     SendEmailButton.Enabled = false;
@@ -102,22 +104,25 @@ namespace RHLauncher
                 default:
                     MsgBoxForm.Show("Error:" + response, LocalizedStrings.Error);
                     break;
-            }
+                }
+            }));
         }
 
         private void ResendTimer_Tick(object? sender, EventArgs e)
         {
             // Decrement the secondsLeft variable and update the button text
             secondsLeft--;
-            TimerLabel.Text = $"({secondsLeft})";
-
-            // If the timer has finished counting down, stop the timer and enable the ResendEmailButton
-            if (secondsLeft == 0)
+            Invoke((MethodInvoker)(() =>
             {
-                resendTimer.Stop();
-                SendEmailButton.Enabled = true;
-                TimerLabel.Text = "";
-            }
+                TimerLabel.Text = $"({secondsLeft})";
+
+                if (secondsLeft == 0)
+                {
+                    resendTimer.Stop();
+                    SendEmailButton.Enabled = true;
+                    TimerLabel.Text = "";
+                }
+            }));
         }
 
         private async Task<string> VerifyCodeSendRequestAsync()
@@ -155,11 +160,12 @@ namespace RHLauncher
                 registryHandler = new RegistryHandler();
                 registryHandler.ClearPassword();
 
+                Invoke((MethodInvoker)(() => Close()));
                 Application.Restart();
             }
             else
             {
-                Close();
+                Invoke((MethodInvoker)(() => Close()));
             }
         }
 

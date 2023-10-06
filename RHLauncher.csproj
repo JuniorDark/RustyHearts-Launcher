@@ -19,8 +19,8 @@
     <AssemblyName>Launcher</AssemblyName>
     <Description>Rusty Hearts Launcher</Description>
     <PlatformTarget>x86</PlatformTarget>
-    <AssemblyVersion>1.0.2</AssemblyVersion>
-    <FileVersion>1.0.2</FileVersion>
+    <AssemblyVersion>1.0.3</AssemblyVersion>
+    <FileVersion>1.0.3</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
