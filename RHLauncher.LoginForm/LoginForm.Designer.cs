@@ -48,6 +48,10 @@
             progressBarLogin = new ProgressBar();
             ForgotPwdLabel = new Label();
             VersionLabel = new Label();
+            imageListLogin_ko = new ImageList(components);
+            imageList2 = new ImageList(components);
+            imageListRegister_ko = new ImageList(components);
+            notifyIcon = new NotifyIcon(components);
             SuspendLayout();
             // 
             // UsernameLabel
@@ -279,6 +283,40 @@
             VersionLabel.TabIndex = 15;
             VersionLabel.Text = "Version:";
             // 
+            // imageListLogin_ko
+            // 
+            imageListLogin_ko.ColorDepth = ColorDepth.Depth32Bit;
+            imageListLogin_ko.ImageStream = (ImageListStreamer)resources.GetObject("imageListLogin_ko.ImageStream");
+            imageListLogin_ko.TransparentColor = Color.Transparent;
+            imageListLogin_ko.Images.SetKeyName(0, "button_login_normal_ko.png");
+            imageListLogin_ko.Images.SetKeyName(1, "button_login_active_ko.png");
+            imageListLogin_ko.Images.SetKeyName(2, "button_login_down_ko.png");
+            // 
+            // imageList2
+            // 
+            imageList2.ColorDepth = ColorDepth.Depth32Bit;
+            imageList2.ImageStream = (ImageListStreamer)resources.GetObject("imageList2.ImageStream");
+            imageList2.TransparentColor = Color.Transparent;
+            imageList2.Images.SetKeyName(0, "button_login_normal.png");
+            imageList2.Images.SetKeyName(1, "button_login_active.png");
+            imageList2.Images.SetKeyName(2, "button_login_down.png");
+            // 
+            // imageListRegister_ko
+            // 
+            imageListRegister_ko.ColorDepth = ColorDepth.Depth32Bit;
+            imageListRegister_ko.ImageStream = (ImageListStreamer)resources.GetObject("imageListRegister_ko.ImageStream");
+            imageListRegister_ko.TransparentColor = Color.Transparent;
+            imageListRegister_ko.Images.SetKeyName(0, "button_register_normal_ko.png");
+            imageListRegister_ko.Images.SetKeyName(1, "button_register_active_ko.png");
+            imageListRegister_ko.Images.SetKeyName(2, "button_register_down_ko.png");
+            // 
+            // notifyIcon
+            // 
+            notifyIcon.Icon = (Icon)resources.GetObject("notifyIcon.Icon");
+            notifyIcon.Text = "Rusty Hearts";
+            notifyIcon.Visible = true;
+            notifyIcon.MouseClick += notifyIcon_MouseClick;
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -311,6 +349,7 @@
             FormClosing += LoginForm_FormClosing;
             Load += LoginForm_Load;
             MouseDown += OnMouseDown;
+            Resize += LoginForm_Resize;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -335,5 +374,9 @@
         private ProgressBar progressBarLogin;
         private Label ForgotPwdLabel;
         private Label VersionLabel;
+        private ImageList imageListLogin_ko;
+        private ImageList imageList2;
+        private ImageList imageListRegister_ko;
+        private NotifyIcon notifyIcon;
     }
 }

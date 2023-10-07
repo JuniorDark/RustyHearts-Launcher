@@ -113,9 +113,29 @@ namespace RHLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap button_login_active_ko {
+            get {
+                object obj = ResourceManager.GetObject("button_login_active_ko", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap button_login_down {
             get {
                 object obj = ResourceManager.GetObject("button_login_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap button_login_down_ko {
+            get {
+                object obj = ResourceManager.GetObject("button_login_down_ko", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +193,29 @@ namespace RHLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap button_register_active_ko {
+            get {
+                object obj = ResourceManager.GetObject("button_register_active_ko", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap button_register_down {
             get {
                 object obj = ResourceManager.GetObject("button_register_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap button_register_down_ko {
+            get {
+                object obj = ResourceManager.GetObject("button_register_down_ko", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +233,29 @@ namespace RHLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap button_register_normal_ko {
+            get {
+                object obj = ResourceManager.GetObject("button_register_normal_ko", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ChangePwwnd_button_email_active {
             get {
                 object obj = ResourceManager.GetObject("ChangePwwnd_button_email_active", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ChangePwwnd_button_email_active_ko {
+            get {
+                object obj = ResourceManager.GetObject("ChangePwwnd_button_email_active_ko", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +273,29 @@ namespace RHLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ChangePwwnd_button_email_down_ko {
+            get {
+                object obj = ResourceManager.GetObject("ChangePwwnd_button_email_down_ko", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ChangePwwnd_button_email_normal {
             get {
                 object obj = ResourceManager.GetObject("ChangePwwnd_button_email_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ChangePwwnd_button_email_normal_ko {
+            get {
+                object obj = ResourceManager.GetObject("ChangePwwnd_button_email_normal_ko", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -473,9 +553,29 @@ namespace RHLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap messagewnd_button_ok_active_ko {
+            get {
+                object obj = ResourceManager.GetObject("messagewnd_button_ok_active_ko", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap messagewnd_button_ok_down {
             get {
                 object obj = ResourceManager.GetObject("messagewnd_button_ok_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap messagewnd_button_ok_down_ko {
+            get {
+                object obj = ResourceManager.GetObject("messagewnd_button_ok_down_ko", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -493,9 +593,29 @@ namespace RHLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap messagewnd_button_ok_normal_ko {
+            get {
+                object obj = ResourceManager.GetObject("messagewnd_button_ok_normal_ko", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Registerwnd_button_continue_active {
             get {
                 object obj = ResourceManager.GetObject("Registerwnd_button_continue_active", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Registerwnd_button_continue_active_ko {
+            get {
+                object obj = ResourceManager.GetObject("Registerwnd_button_continue_active_ko", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -513,9 +633,29 @@ namespace RHLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Registerwnd_button_continue_down_ko {
+            get {
+                object obj = ResourceManager.GetObject("Registerwnd_button_continue_down_ko", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Registerwnd_button_continue_normal {
             get {
                 object obj = ResourceManager.GetObject("Registerwnd_button_continue_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Registerwnd_button_continue_normal_ko {
+            get {
+                object obj = ResourceManager.GetObject("Registerwnd_button_continue_normal_ko", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -533,6 +673,16 @@ namespace RHLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Registerwndwnd_button_sendemail_active_ko {
+            get {
+                object obj = ResourceManager.GetObject("Registerwndwnd_button_sendemail_active_ko", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Registerwndwnd_button_sendemail_down {
             get {
                 object obj = ResourceManager.GetObject("Registerwndwnd_button_sendemail_down", resourceCulture);
@@ -543,9 +693,29 @@ namespace RHLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Registerwndwnd_button_sendemail_down_ko {
+            get {
+                object obj = ResourceManager.GetObject("Registerwndwnd_button_sendemail_down_ko", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Registerwndwnd_button_sendemail_normal {
             get {
                 object obj = ResourceManager.GetObject("Registerwndwnd_button_sendemail_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Registerwndwnd_button_sendemail_normal_ko {
+            get {
+                object obj = ResourceManager.GetObject("Registerwndwnd_button_sendemail_normal_ko", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

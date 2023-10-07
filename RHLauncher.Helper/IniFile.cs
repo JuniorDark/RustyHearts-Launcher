@@ -3,14 +3,14 @@ using System.Text;
 
 namespace RHLauncher.RHLauncher.Helper
 {
-    public class IniFile
+    public partial class IniFile
     {
         private readonly string _iniFilePath;
 
-        [DllImport("kernel32")]
-        private static extern long WritePrivateProfileString(string section, string key, string val, string filePath);
+        [LibraryImport("kernel32", EntryPoint = "WritePrivateProfileStringW", StringMarshalling = StringMarshalling.Utf16)]
+        private static partial long WritePrivateProfileString(string section, string key, string val, string filePath);
 
-        [DllImport("kernel32")]
+        [DllImport("kernel32", CharSet = CharSet.Unicode)]
         private static extern int GetPrivateProfileString(string section, string key, string def, StringBuilder retVal, int size, string filePath);
 
         public IniFile(string iniFileName)
@@ -24,13 +24,15 @@ namespace RHLauncher.RHLauncher.Helper
                 WritePrivateProfileString("Info", "LoginURL", "http://localhost:3000", _iniFilePath);
                 //Default client service
                 WritePrivateProfileString("Info", "Service", "usa", _iniFilePath);
+                //Default launcher language
+                WritePrivateProfileString("Launcher", "Lang", "en", _iniFilePath);
             }
         }
 
         public string ReadValue(string section, string key)
         {
             StringBuilder sb = new(255);
-            GetPrivateProfileString(section, key, "", sb, 255, _iniFilePath);
+            _ = GetPrivateProfileString(section, key, "", sb, 255, _iniFilePath);
             return sb.ToString();
         }
 

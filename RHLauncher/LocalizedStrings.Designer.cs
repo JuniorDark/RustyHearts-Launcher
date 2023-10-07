@@ -70,11 +70,47 @@ namespace RHLauncher.RHLauncher {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account Details.
+        /// </summary>
+        public static string AccountDetails {
+            get {
+                return ResourceManager.GetString("AccountDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Email.
+        /// </summary>
+        public static string AccountEmail {
+            get {
+                return ResourceManager.GetString("AccountEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Name.
+        /// </summary>
+        public static string AccountName {
+            get {
+                return ResourceManager.GetString("AccountName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A account with this email was not found.
         /// </summary>
         public static string AccountNotFound {
             get {
                 return ResourceManager.GetString("AccountNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Agree and accept the.
+        /// </summary>
+        public static string AgreeTerms {
+            get {
+                return ResourceManager.GetString("AgreeTerms", resourceCulture);
             }
         }
         
@@ -106,6 +142,15 @@ namespace RHLauncher.RHLauncher {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change Password.
+        /// </summary>
+        public static string ChangePwdFormTitle {
+            get {
+                return ResourceManager.GetString("ChangePwdFormTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Auto Login.
         /// </summary>
         public static string CheckBoxAutoLogin {
@@ -129,6 +174,15 @@ namespace RHLauncher.RHLauncher {
         public static string Checking {
             get {
                 return ResourceManager.GetString("Checking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check Update.
+        /// </summary>
+        public static string CheckUpdate {
+            get {
+                return ResourceManager.GetString("CheckUpdate", resourceCulture);
             }
         }
         
@@ -223,6 +277,15 @@ namespace RHLauncher.RHLauncher {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter the password.
+        /// </summary>
+        public static string EnterPassword {
+            get {
+                return ResourceManager.GetString("EnterPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         public static string Error {
@@ -259,6 +322,15 @@ namespace RHLauncher.RHLauncher {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Game Settings.
+        /// </summary>
+        public static string GameSettings {
+            get {
+                return ResourceManager.GetString("GameSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Info.
         /// </summary>
         public static string Info {
@@ -273,6 +345,15 @@ namespace RHLauncher.RHLauncher {
         public static string Install {
             get {
                 return ResourceManager.GetString("Install", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Install Location.
+        /// </summary>
+        public static string InstallLocation {
+            get {
+                return ResourceManager.GetString("InstallLocation", resourceCulture);
             }
         }
         
@@ -300,6 +381,15 @@ namespace RHLauncher.RHLauncher {
         public static string Launch {
             get {
                 return ResourceManager.GetString("Launch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rusty Hearts Launcher.
+        /// </summary>
+        public static string LauncherFormTitle {
+            get {
+                return ResourceManager.GetString("LauncherFormTitle", resourceCulture);
             }
         }
         
@@ -421,11 +511,38 @@ namespace RHLauncher.RHLauncher {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        public static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to logout?.
         /// </summary>
         public static string LogoutText {
             get {
                 return ResourceManager.GetString("LogoutText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt; Manage.
+        /// </summary>
+        public static string Manage {
+            get {
+                return ResourceManager.GetString("Manage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message.
+        /// </summary>
+        public static string MsgBoxFormTitle {
+            get {
+                return ResourceManager.GetString("MsgBoxFormTitle", resourceCulture);
             }
         }
         
@@ -444,6 +561,24 @@ namespace RHLauncher.RHLauncher {
         public static string NewPasswordDesc {
             get {
                 return ResourceManager.GetString("NewPasswordDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Install Dir.
+        /// </summary>
+        public static string OpenInstallDir {
+            get {
+                return ResourceManager.GetString("OpenInstallDir", resourceCulture);
             }
         }
         
@@ -547,7 +682,25 @@ namespace RHLauncher.RHLauncher {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Re-enter the new password.
+        ///   Looks up a localized string similar to Register Account.
+        /// </summary>
+        public static string RegFormTitle {
+            get {
+                return ResourceManager.GetString("RegFormTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register Account.
+        /// </summary>
+        public static string RegisterAccount {
+            get {
+                return ResourceManager.GetString("RegisterAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repeat the new password.
         /// </summary>
         public static string RepeatPassword {
             get {
@@ -709,6 +862,24 @@ namespace RHLauncher.RHLauncher {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;User Agreement&quot;.
+        /// </summary>
+        public static string UserAgreement {
+            get {
+                return ResourceManager.GetString("UserAgreement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 6-16 alphanumeric characters.
+        /// </summary>
+        public static string UsernameDesc {
+            get {
+                return ResourceManager.GetString("UsernameDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name cannot be empty.
         /// </summary>
         public static string UsernameDescLabelEmpty {
@@ -786,6 +957,15 @@ namespace RHLauncher.RHLauncher {
         public static string Welcome {
             get {
                 return ResourceManager.GetString("Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

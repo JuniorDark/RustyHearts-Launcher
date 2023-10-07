@@ -14,16 +14,48 @@ namespace RHLauncher
         public string windyCode = string.Empty;
         public string password = string.Empty;
         public string LoginUrl = Configuration.Default.LoginUrl;
+        public string Lang = Configuration.Default.Lang;
+        private List<Button>? buttons;
+        private List<ImageList>? imageLists;
+        private Dictionary<string, List<ImageList>>? languageImageLists;
 
         public LoginForm()
         {
             InitializeComponent();
 
+            LoadLocalizedStrings();
+
+            notifyIcon.Text = LocalizedStrings.RustyHearts;
+            Text = LocalizedStrings.LauncherFormTitle;
             UsernameLabel.Text = LocalizedStrings.UsernameLabel;
             PasswordLabel.Text = LocalizedStrings.PasswordLabel;
             CheckBoxSaveUser.Text = LocalizedStrings.CheckBoxSaveUser;
             CheckBoxAutoLogin.Text = LocalizedStrings.CheckBoxAutoLogin;
             ForgotPwdLabel.Text = LocalizedStrings.ForgotPwdLabel;
+            // Adjust ForgotPwdLabel location for Korean
+            if (Lang == "ko")
+            {
+                ForgotPwdLabel.Location = new Point(630, 410);
+            }
+
+        }
+
+        private void LoadLocalizedStrings()
+        {
+            // Initialize buttons and image lists
+            buttons = new List<Button> { LoginButton, RegisterButton };
+            imageLists = new List<ImageList> { imageListLogin, imageListRegister };
+
+            // Initialize language-specific image lists
+            languageImageLists = new Dictionary<string, List<ImageList>>
+        {
+            { "en", new List<ImageList> { imageListLogin, imageListRegister } }, // English image lists
+            { "ko", new List<ImageList> { imageListLogin_ko, imageListRegister_ko } }, // Korean image lists
+            // Add other languages and their respective image lists here
+        };
+
+            // Load the appropriate resource file based on the selected language
+            LocalizationHelper.LoadLocalizedStrings(Lang, buttons, imageLists, languageImageLists);
         }
 
         #region Methods
@@ -84,7 +116,7 @@ namespace RHLauncher
                 MsgBoxForm.Show(LocalizedStrings.LoginInsertUsername, LocalizedStrings.LoginWindowTitle);
                 return;
             }
-            if (!Regex.IsMatch(UsernameTextBox.Text, @"^[A-Za-z0-9]{6,50}$|^[\w\d._%+-]+@[\w\d.-]+\.[\w]{2,}$"))
+            if (!UsernameRegex().IsMatch(UsernameTextBox.Text))
             {
                 MsgBoxForm.Show(LocalizedStrings.LoginInvalidUsernameFormat, LocalizedStrings.LoginWindowTitle);
                 return;
@@ -116,6 +148,9 @@ namespace RHLauncher
                 LoginButton.Enabled = true;
             }
         }
+
+        [GeneratedRegex("^[a-z0-9]{6,50}$|^[\\w\\d._%+-]+@[\\w\\d.-]+\\.[\\w]{2,}$")]
+        private static partial Regex UsernameRegex();
 
         private async void AutoLogin()
         {
@@ -159,6 +194,7 @@ namespace RHLauncher
                         windyCode = loginResponse["WindyCode"];
                         password = loginResponse["Token"];
                         Hide();
+                        notifyIcon.Visible = false;
                         LauncherForm launcherForm = new(windyCode, password);
                         launcherForm.ShowDialog();
                         break;
@@ -227,14 +263,6 @@ namespace RHLauncher
             }
         }
 
-        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                Application.Exit();
-            }
-        }
-
         #endregion
 
         #region Button Click Events
@@ -278,6 +306,36 @@ namespace RHLauncher
         #endregion
 
         #region Button Events
+
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void LoginForm_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                notifyIcon.Visible = true;
+            }
+            else
+            {
+                notifyIcon.Visible = false;
+            }
+        }
+
+        private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Show();
+                WindowState = FormWindowState.Normal;
+                notifyIcon.Visible = false;
+            }
+        }
 
         private void MinimizeButton_MouseHover(object sender, EventArgs e)
         {
@@ -347,6 +405,7 @@ namespace RHLauncher
         }
 
         #endregion
+
 
     }
 }

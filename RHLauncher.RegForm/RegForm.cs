@@ -11,6 +11,10 @@ namespace RHLauncher
         public string AgreementUrl = Configuration.Default.AgreementUrl;
         public string VerifyCodeUrl = Configuration.Default.VerifyCodeUrl;
         public string RegisterUrl = Configuration.Default.RegisterUrl;
+        public string Lang = Configuration.Default.Lang;
+        private List<Button>? buttons;
+        private List<ImageList>? imageLists;
+        private Dictionary<string, List<ImageList>>? languageImageLists;
 
         private readonly System.Windows.Forms.Timer resendTimer = new();
         private int secondsLeft = 60;
@@ -22,11 +26,48 @@ namespace RHLauncher
             Stage1Panel.Visible = true;
             Stage2Panel.Visible = false;
 
+            LoadLocalizedStrings();
+
+            Text = LocalizedStrings.ChangePwdFormTitle;
+            EmailLabel.Text = LocalizedStrings.AccountEmail;
+            TitleLabelS1.Text = LocalizedStrings.RegisterAccount;
+            SubTitleLabelS1.Text = LocalizedStrings.RustyHearts;
+            CodeLabel.Text = LocalizedStrings.VerificationCode;
+            TitleLabelS2.Text = LocalizedStrings.AccountDetails;
+            SubTitleLabelS2.Text = LocalizedStrings.Account;
+            NameLabel.Text = LocalizedStrings.AccountName;
+            PasswordLabel.Text = LocalizedStrings.EnterPassword;
+            RepeatPasswordLabel.Text = LocalizedStrings.RepeatPassword;
+            AgreeCheckBox.Text = LocalizedStrings.AgreeTerms;
+            AgreementLabel.Text = LocalizedStrings.UserAgreement;
+            NameDescLabel.Text = LocalizedStrings.UsernameDesc;
+            PwdDescLabel.Text = LocalizedStrings.NewPasswordDesc;
+            PwdConfirmDescLabel.Text = LocalizedStrings.RepeatPasswordDesc;
+            ReturnLabelS2.Text = LocalizedStrings.Return;
+
             resendTimer = new System.Windows.Forms.Timer
             {
                 Interval = 1000
             };
             resendTimer.Tick += ResendTimer_Tick;
+        }
+
+        private void LoadLocalizedStrings()
+        {
+            // Initialize buttons and image lists
+            buttons = new List<Button> { ContinueButtonS1, SendEmailButton, ContinueButtonS2 };
+            imageLists = new List<ImageList> { imageListContinueBtn, imageListSendEmailBtn, imageListContinueBtn };
+
+            // Initialize language-specific image lists
+            languageImageLists = new Dictionary<string, List<ImageList>>
+        {
+            { "en", new List<ImageList> { imageListContinueBtn, imageListSendEmailBtn, imageListContinueBtn } }, // English image lists
+            { "ko", new List<ImageList> { imageListContinueBtn_ko, imageListSendEmailBtn_ko, imageListContinueBtn_ko } }, // Korean image lists
+            // Add other languages and their respective image lists here
+        };
+
+            // Load the appropriate resource file based on the selected language
+            LocalizationHelper.LoadLocalizedStrings(Lang, buttons, imageLists, languageImageLists);
         }
 
         #region Methods

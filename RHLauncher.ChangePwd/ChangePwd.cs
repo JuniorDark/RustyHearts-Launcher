@@ -12,6 +12,11 @@ namespace RHLauncher
         public string SendPasswordCodeUrl = Configuration.Default.SendPasswordCodeUrl;
         public string VerifyCodeUrl = Configuration.Default.VerifyCodeUrl;
         public string ChangePasswordUrl = Configuration.Default.ChangePasswordUrl;
+        public string Lang = Configuration.Default.Lang;
+        private List<Button>? buttons;
+        private List<ImageList>? imageLists;
+        private Dictionary<string, List<ImageList>>? languageImageLists;
+
 
         private readonly System.Windows.Forms.Timer resendTimer = new();
         private int secondsLeft = 60;
@@ -32,7 +37,9 @@ namespace RHLauncher
             resendTimer.Tick += ResendTimer_Tick;
             _shouldRestart = shouldRestart;
 
+            LoadLocalizedStrings();
 
+            Text = LocalizedStrings.RegFormTitle;
             TitleLabelS1.Text = LocalizedStrings.ChangePassword;
             TitleLabelS2.Text = LocalizedStrings.ChangePassword;
             SubTitleLabelS1.Text = LocalizedStrings.RustyHearts;
@@ -45,6 +52,24 @@ namespace RHLauncher
             RepeatPasswordLabel.Text = LocalizedStrings.RepeatPassword;
             PwdConfirmDescLabel.Text = LocalizedStrings.RepeatPasswordDesc;
 
+        }
+
+        private void LoadLocalizedStrings()
+        {
+            // Initialize buttons and image lists
+            buttons = new List<Button> { ContinueButtonS1, SendEmailButton, OkButtonS2 };
+            imageLists = new List<ImageList> { imageListContinueBtn, imageListSendEmailBtn, imageListOKBtn };
+
+            // Initialize language-specific image lists
+            languageImageLists = new Dictionary<string, List<ImageList>>
+        {
+            { "en", new List<ImageList> { imageListContinueBtn, imageListSendEmailBtn, imageListOKBtn } }, // English image lists
+            { "ko", new List<ImageList> { imageListContinueBtn_ko, imageListSendEmailBtn_ko, imageListOKBtn_ko } }, // Korean image lists
+            // Add other languages and their respective image lists here
+        };
+
+            // Load the appropriate resource file based on the selected language
+            LocalizationHelper.LoadLocalizedStrings(Lang, buttons, imageLists, languageImageLists);
         }
 
         #region Methods
@@ -66,44 +91,44 @@ namespace RHLauncher
             Invoke((MethodInvoker)(() =>
             {
                 switch (response)
-            {
-                case "EmailSent":
-                    SendEmailButton.Enabled = false;
-                    resendTimer.Start();
-                    break;
-                case "ValidVerificationCode":
-                    // Hide the firs panel and show the second panel
-                    Stage1Panel.Visible = false;
-                    Stage2Panel.Visible = true;
-                    EmailLabelS2.Text = EmailTextBox.Text;
-                    CodeDescLabel.Text = "";
-                    CodePictureBox.Image = imageListTips.Images[1];
-                    break;
-                case "PasswordChanged":
-                    MsgBoxForm.Show(LocalizedStrings.PasswordChanged, LocalizedStrings.Success);
-                    OnPasswordChanged();
-                    break;
-                case "SamePassword":
-                    MsgBoxForm.Show(LocalizedStrings.SamePassword, LocalizedStrings.Failed);
-                    break;
-                case "AccountNotFound":
-                    EmailDescLabel.Text = LocalizedStrings.AccountNotFound;
-                    EmailDescLabel.ForeColor = Color.Red;
-                    EmailPictureBox.Image = imageListTips.Images[0];
-                    return;
-                case "InvalidVerificationCode":
-                    CodeDescLabel.Text = LocalizedStrings.InvalidVerificationCode;
-                    CodeDescLabel.ForeColor = Color.Red;
-                    CodePictureBox.Image = imageListTips.Images[0];
-                    return;
-                case "ExpiredVerificationCode":
-                    CodeDescLabel.Text = LocalizedStrings.ExpiredVerificationCode;
-                    CodeDescLabel.ForeColor = Color.Red;
-                    CodePictureBox.Image = imageListTips.Images[0];
-                    return;
-                default:
-                    MsgBoxForm.Show("Error:" + response, LocalizedStrings.Error);
-                    break;
+                {
+                    case "EmailSent":
+                        SendEmailButton.Enabled = false;
+                        resendTimer.Start();
+                        break;
+                    case "ValidVerificationCode":
+                        // Hide the firs panel and show the second panel
+                        Stage1Panel.Visible = false;
+                        Stage2Panel.Visible = true;
+                        EmailLabelS2.Text = EmailTextBox.Text;
+                        CodeDescLabel.Text = "";
+                        CodePictureBox.Image = imageListTips.Images[1];
+                        break;
+                    case "PasswordChanged":
+                        MsgBoxForm.Show(LocalizedStrings.PasswordChanged, LocalizedStrings.Success);
+                        OnPasswordChanged();
+                        break;
+                    case "SamePassword":
+                        MsgBoxForm.Show(LocalizedStrings.SamePassword, LocalizedStrings.Failed);
+                        break;
+                    case "AccountNotFound":
+                        EmailDescLabel.Text = LocalizedStrings.AccountNotFound;
+                        EmailDescLabel.ForeColor = Color.Red;
+                        EmailPictureBox.Image = imageListTips.Images[0];
+                        return;
+                    case "InvalidVerificationCode":
+                        CodeDescLabel.Text = LocalizedStrings.InvalidVerificationCode;
+                        CodeDescLabel.ForeColor = Color.Red;
+                        CodePictureBox.Image = imageListTips.Images[0];
+                        return;
+                    case "ExpiredVerificationCode":
+                        CodeDescLabel.Text = LocalizedStrings.ExpiredVerificationCode;
+                        CodeDescLabel.ForeColor = Color.Red;
+                        CodePictureBox.Image = imageListTips.Images[0];
+                        return;
+                    default:
+                        MsgBoxForm.Show("Error:" + response, LocalizedStrings.Error);
+                        break;
                 }
             }));
         }

@@ -1,4 +1,5 @@
 ﻿using System.IO.Compression;
+using RHLauncher.DynamicLib;
 
 namespace RHLauncher
 {

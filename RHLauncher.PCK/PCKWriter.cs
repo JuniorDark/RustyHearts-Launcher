@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using RHLauncher.DynamicLib;
 using RHLauncher.Helper;
 using System.Text;
 
@@ -114,7 +115,7 @@ namespace RHLauncher.PCK
                 string pathF00X = Path.Combine(installDirectory, "f00x.dat");
                 if (File.Exists(pathF00X))
                 {
-                    byte[] buffer = await File.ReadAllBytesAsync(pathF00X);
+                    byte[] buffer = await File.ReadAllBytesAsync(pathF00X, cancellationToken);
                     int numDecompressed = buffer.Length << 4;
                     byte[] decompressed = new byte[numDecompressed];
                     int result = ZLibDll.Decompress(buffer, buffer.Length, decompressed, ref numDecompressed);

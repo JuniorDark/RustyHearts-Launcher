@@ -19,8 +19,8 @@
     <AssemblyName>Launcher</AssemblyName>
     <Description>Rusty Hearts Launcher</Description>
     <PlatformTarget>x86</PlatformTarget>
-    <AssemblyVersion>1.0.3</AssemblyVersion>
-    <FileVersion>1.0.3</FileVersion>
+    <AssemblyVersion>1.1.0</AssemblyVersion>
+    <FileVersion>1.1.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -65,6 +65,9 @@
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="RHLauncher\LocalizedStrings.ko.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="RHLauncher\LocalizedStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

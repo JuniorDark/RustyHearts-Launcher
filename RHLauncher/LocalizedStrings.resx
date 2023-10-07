@@ -120,8 +120,20 @@
   <data name="Account" xml:space="preserve">
     <value>Account</value>
   </data>
+  <data name="AccountDetails" xml:space="preserve">
+    <value>Account Details</value>
+  </data>
+  <data name="AccountEmail" xml:space="preserve">
+    <value>Account Email</value>
+  </data>
+  <data name="AccountName" xml:space="preserve">
+    <value>Account Name</value>
+  </data>
   <data name="AccountNotFound" xml:space="preserve">
     <value>A account with this email was not found</value>
+  </data>
+  <data name="AgreeTerms" xml:space="preserve">
+    <value>Agree and accept the</value>
   </data>
   <data name="AlreadyExecute" xml:space="preserve">
     <value>rustyhearts.exe is already running.</value>
@@ -132,6 +144,9 @@
   <data name="ChangePassword" xml:space="preserve">
     <value>Change Password</value>
   </data>
+  <data name="ChangePwdFormTitle" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
   <data name="CheckBoxAutoLogin" xml:space="preserve">
     <value>Auto Login</value>
   </data>
@@ -140,6 +155,9 @@
   </data>
   <data name="Checking" xml:space="preserve">
     <value>Checking</value>
+  </data>
+  <data name="CheckUpdate" xml:space="preserve">
+    <value>Check Update</value>
   </data>
   <data name="CodeDescLabel" xml:space="preserve">
     <value>Insert the verification code</value>
@@ -171,6 +189,9 @@
   <data name="EnterEmail" xml:space="preserve">
     <value>Enter your Email address</value>
   </data>
+  <data name="EnterPassword" xml:space="preserve">
+    <value>Enter the password</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
@@ -183,11 +204,17 @@
   <data name="ForgotPwdLabel" xml:space="preserve">
     <value>Forgot Password?</value>
   </data>
+  <data name="GameSettings" xml:space="preserve">
+    <value>Game Settings</value>
+  </data>
   <data name="Info" xml:space="preserve">
     <value>Info</value>
   </data>
   <data name="Install" xml:space="preserve">
     <value>Install</value>
+  </data>
+  <data name="InstallLocation" xml:space="preserve">
+    <value>Install Location</value>
   </data>
   <data name="InvalidVerificationCode" xml:space="preserve">
     <value>Invalid Verification Code</value>
@@ -197,6 +224,9 @@
   </data>
   <data name="Launch" xml:space="preserve">
     <value>Launch</value>
+  </data>
+  <data name="LauncherFormTitle" xml:space="preserve">
+    <value>Rusty Hearts Launcher</value>
   </data>
   <data name="LauncherUpdateCheckFailed" xml:space="preserve">
     <value>Error checking for launcher update: </value>
@@ -237,14 +267,29 @@
   <data name="LoginWindowTitle" xml:space="preserve">
     <value>Login Window</value>
   </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
   <data name="LogoutText" xml:space="preserve">
     <value>Are you sure you want to logout?</value>
+  </data>
+  <data name="Manage" xml:space="preserve">
+    <value>&lt; Manage</value>
+  </data>
+  <data name="MsgBoxFormTitle" xml:space="preserve">
+    <value>Message</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
     <value>Enter the new password</value>
   </data>
   <data name="NewPasswordDesc" xml:space="preserve">
     <value>6-16 characters</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="OpenInstallDir" xml:space="preserve">
+    <value>Open Install Dir</value>
   </data>
   <data name="Packing" xml:space="preserve">
     <value>Packing</value>
@@ -279,8 +324,14 @@
   <data name="PwdStrengthLabelWeak" xml:space="preserve">
     <value>Weak</value>
   </data>
+  <data name="RegFormTitle" xml:space="preserve">
+    <value>Register Account</value>
+  </data>
+  <data name="RegisterAccount" xml:space="preserve">
+    <value>Register Account</value>
+  </data>
   <data name="RepeatPassword" xml:space="preserve">
-    <value>Re-enter the new password</value>
+    <value>Repeat the new password</value>
   </data>
   <data name="RepeatPasswordDesc" xml:space="preserve">
     <value>Repeat the password</value>
@@ -333,6 +384,12 @@
   <data name="Updating" xml:space="preserve">
     <value>Updating</value>
   </data>
+  <data name="UserAgreement" xml:space="preserve">
+    <value>"User Agreement"</value>
+  </data>
+  <data name="UsernameDesc" xml:space="preserve">
+    <value>6-16 alphanumeric characters</value>
+  </data>
   <data name="UsernameDescLabelEmpty" xml:space="preserve">
     <value>Name cannot be empty</value>
   </data>
@@ -359,5 +416,8 @@
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

@@ -67,6 +67,7 @@
             InstallButton = new Button();
             InstallPanel = new Panel();
             UninstallButton = new Button();
+            notifyIcon = new NotifyIcon(components);
             ((System.ComponentModel.ISupportInitialize)CharPictureBox).BeginInit();
             getUpdatePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
@@ -667,6 +668,13 @@
             UninstallButton.MouseLeave += MenuButton_MouseLeave;
             UninstallButton.MouseHover += MenuButton_MouseHover;
             // 
+            // notifyIcon
+            // 
+            notifyIcon.Icon = (Icon)resources.GetObject("notifyIcon.Icon");
+            notifyIcon.Text = "Rusty Hearts";
+            notifyIcon.Visible = true;
+            notifyIcon.MouseClick += notifyIcon_MouseClick;
+            // 
             // LauncherForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -698,6 +706,7 @@
             FormClosing += LauncherForm_FormClosing;
             Load += LauncherForm_Load;
             MouseDown += OnMouseDown;
+            Resize += LauncherForm_Resize;
             ((System.ComponentModel.ISupportInitialize)CharPictureBox).EndInit();
             getUpdatePanel.ResumeLayout(false);
             getUpdatePanel.PerformLayout();
@@ -736,7 +745,6 @@
         private Button LaunchOptionsButton;
         private ImageList imageListLaunchOpt;
         private Panel LaunchPanel;
-        private Label CheckUpdateLabel;
         private Button CheckUpdateButton;
         private ImageList imageListMenuButton;
         private Button LogoutButton;
@@ -749,5 +757,6 @@
         private Button OpenSettingsButton;
         private ImageList imageListStopBtn;
         private Button StopButton;
+        private NotifyIcon notifyIcon;
     }
 }

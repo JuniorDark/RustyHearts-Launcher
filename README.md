@@ -10,12 +10,18 @@
 ## Introduction
 Rusty Hearts Launcher is a custom launcher for the Rusty Hearts game client. It provides several features, including self-updating, automatic game updates, account registration, and a news window.
 
+## Preview
+![image](screenshoots/preview-01.png)
+![image](screenshoots/preview-02.png)
+![image](screenshoots/preview-03.png)
+![image](screenshoots/preview-04.png)
+![image](screenshoots/preview-ko.png)
+
 ## Table of Contents
 * [Features](#features)
 * [Setup](#setup)
 * [Prerequisites for Building Locally/Development](#prerequisites-for-building-locallydevelopment)
 * [System Requirements for Ready-to-use build](#system-requirements-for-ready-to-use-build)
-* [Preview](#preview)
 * [License](#license)
 * [Contributing](#contributing)
 * [FAQ](#faq)
@@ -34,12 +40,12 @@ The launcher require the [Rusty Hearts API](https://github.com/JuniorDark/RustyH
 
 ### API URL
 
-In order for the launcher to work it need to be conected to the api. To change the URL address of the launcher API open the config.ini (it will be created when opening the launcher for the first time).
+In order for the launcher to work it need to be conected to the api. To change the URL address of the launcher API open the Config.ini (it will be created when opening the launcher for the first time).
 
 The default URL for the api can be changed on IniFile.cs
 
 ### Client region
-The client region can be set on Service on config.ini 
+The client region can be set on Service on Config.ini 
 
 * **usa** (PWE) - Full api support
 * **chn** (Xunlei) - Only launcher support
@@ -54,10 +60,16 @@ In order to create client patches, you need to use the `patch` directory of the 
 
 The tool for creating the patch files is available in the repository: https://github.com/JuniorDark/RustyHearts-MIPTool
 
-### Launcher customization
-If you want to change the text on the launcher the strings can be found on LocalizedStrings.resx resource file.
+### Launcher Language
+The launcher language can be set on `Lang` on Config.ini 
 
-If you want to change the text on the buttons/images used in the launcher you can use the Photoshop .psd files included in the Resources.rar
+* **en** - English (en-US) default language
+* **ko** - Korean ("ko-KR) (Machine Translated)
+
+### Launcher customization
+If you want to add a new language create a LocalizedStrings.<language>.resx with for the desired language. The english strings can be found on LocalizedStrings.resx resource file.
+
+If you want to change the text on the buttons/images used in the launcher you can use the Photoshop .psd files included in the PSD Resources.rar
 
 ## Prerequisites for Building Locally/Development
 The launcher is built in .NET 7 and as such, the packages listed below are required to create a local and development build of the launcher. Furthermore, it uses many submodules and packages outside of this, which will automatically be loaded when the user sets up a local environment of the application.
@@ -68,12 +80,6 @@ The launcher is built in .NET 7 and as such, the packages listed below are requi
 ## System Requirements for Ready-to-use build
 * OS: Windows 10 1809 Update (build 17763) or later / Windows 11 (Any builds)
 * Architecture: x64/AMD64
-
-## Preview
-![image](screenshoots/preview-01.png)
-![image](screenshoots/preview-02.png)
-![image](screenshoots/preview-03.png)
-![image](screenshoots/preview-04.png)
 
 ## License
 This project is licensed under the terms found in [`LICENSE-0BSD`](LICENSE).
@@ -100,4 +106,3 @@ If you need help with the launcher, please submit an issue on GitHub.
 ## Roadmap
 * Add support for client download/repair
 * Improve performance and stability
-* Add support for additional languages

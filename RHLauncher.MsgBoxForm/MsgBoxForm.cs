@@ -1,4 +1,4 @@
-﻿using RHLauncher.RHLauncher.Helper;
+﻿using RHLauncher.RHLauncher;
 
 namespace RHLauncher
 {
@@ -10,9 +10,9 @@ namespace RHLauncher
         {
             InitializeComponent();
 
-
-            YesButton.Click += YesButton_Click;
-            NoButton.Click += NoButton_Click;
+            Text = LocalizedStrings.MsgBoxFormTitle;
+            YesButton.Text = LocalizedStrings.Yes;
+            NoButton.Text = LocalizedStrings.No;
         }
 
         private void YesButton_Click(object sender, EventArgs e)
@@ -139,7 +139,7 @@ namespace RHLauncher
 
         private void MsgBoxForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Dispose();
+            Dispose();
         }
     }
 }

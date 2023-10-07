@@ -2,7 +2,7 @@ namespace RHLauncher.RHLauncher.Helper;
 
 public class Configuration
 {
-    private static readonly string DefaultIniFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.ini");
+    private static readonly string DefaultIniFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config.ini");
 
     public static readonly Configuration Default = new();
 
@@ -34,6 +34,10 @@ public class Configuration
         //Launcher update endpoints
         GetLauncherVersion = $"{apiUrl}/launcherApi/launcherUpdater/getLauncherVersion";
         UpdateLauncherVersion = $"{apiUrl}/launcherApi/launcherUpdater/updateLauncherVersion";
+
+        //Launcher settings
+        string lang = iniFile.ReadValue("Launcher", "Lang");
+        Lang = lang;
     }
 
     public string GateXMLUrl { get; set; }
@@ -51,5 +55,6 @@ public class Configuration
     public string GetLauncherVersion { get; set; }
     public string UpdateLauncherVersion { get; set; }
     public string DownloadUpdateFileUrl { get; set; }
+    public string Lang { get; set; }
 }
 

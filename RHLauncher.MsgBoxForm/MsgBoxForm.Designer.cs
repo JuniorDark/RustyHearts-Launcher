@@ -165,6 +165,7 @@
             YesButton.TabIndex = 13;
             YesButton.Text = "Yes";
             YesButton.UseVisualStyleBackColor = false;
+            YesButton.Click += YesButton_Click;
             YesButton.MouseDown += YesButton_OnMouseDown;
             YesButton.MouseLeave += YesButton_MouseLeave;
             YesButton.MouseHover += YesButton_MouseHover;
@@ -196,6 +197,7 @@
             NoButton.TabIndex = 14;
             NoButton.Text = "No";
             NoButton.UseVisualStyleBackColor = false;
+            NoButton.Click += NoButton_Click;
             NoButton.MouseDown += NoButton_OnMouseDown;
             NoButton.MouseLeave += NoButton_MouseLeave;
             NoButton.MouseHover += NoButton_MouseHover;

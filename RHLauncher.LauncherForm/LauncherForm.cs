@@ -22,9 +22,8 @@ namespace RHLauncher
     public partial class LauncherForm : Form
     {
         private RegistryHandler registryHandler = new();
-        private readonly CancellationTokenSource? cancellationTokenSource;
         public string? installDirectory;
-        private static readonly string DefaultIniFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.ini");
+        private static readonly string DefaultIniFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config.ini");
         private readonly IniFile _iniFile = new(DefaultIniFilePath);
         private readonly string _windyCode;
         private readonly string _password;
@@ -44,7 +43,17 @@ namespace RHLauncher
         {
             InitializeComponent();
 
+            notifyIcon.Text = LocalizedStrings.RustyHearts;
+            Text = LocalizedStrings.LauncherFormTitle;
             LabelNews.Text = LocalizedStrings.LabelNews;
+            InstallButton.Text = LocalizedStrings.InstallLocation;
+            UninstallButton.Text = LocalizedStrings.Uninstall;
+            OpenSettingsButton.Text = LocalizedStrings.GameSettings;
+            CheckUpdateButton.Text = LocalizedStrings.CheckUpdate;
+            OpenInstallDirButton.Text = LocalizedStrings.OpenInstallDir;
+            ManageButton.Text = LocalizedStrings.Manage;
+            ChangePwdButton.Text = LocalizedStrings.ChangePassword;
+            LogoutButton.Text = LocalizedStrings.Logout;
 
             _windyCode = windyCode;
             _password = password;
@@ -70,7 +79,7 @@ namespace RHLauncher
             }
             else
             {
-                var updater = new ServiceFileHandler("config.ini", installDirectory);
+                ServiceFileHandler updater = new("Config.ini", installDirectory);
                 updater.UpdateService();
 
                 await CheckForUpdates();
@@ -138,7 +147,6 @@ namespace RHLauncher
                         LaunchButton.Enabled = true;
                         LaunchButton.Click -= LaunchGameButton_Click;
                         LaunchButton.Click += InstallUpdateButton_Click;
-
                         break;
                     case UpdateState.NoUpdateAvailable:
                         LaunchButton.Text = LocalizedStrings.Launch;
@@ -406,8 +414,16 @@ namespace RHLauncher
                 };
                 Process? process = Process.Start(startInfo);
                 WindowState = FormWindowState.Minimized;
+
+                if (WindowState == FormWindowState.Minimized)
+                {
+                    Hide();
+                    notifyIcon.Visible = true;
+                }
                 await process.WaitForExitAsync();
-                WindowState = FormWindowState.Maximized;
+                Show();
+                WindowState = FormWindowState.Normal;
+                notifyIcon.Visible = false;
                 await CheckForUpdates();
             }
             catch (Exception ex)
@@ -471,7 +487,7 @@ namespace RHLauncher
             }
             else
             {
-                LoginForm newLoginForm = new LoginForm();
+                LoginForm newLoginForm = new();
                 newLoginForm.Show();
                 Close();
             }
@@ -576,7 +592,7 @@ namespace RHLauncher
             changePwd.ShowDialog();
         }
 
-        private async void ChangePwd_FormClosing(object sender, FormClosingEventArgs e)
+        private void ChangePwd_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (sender is ChangePwd changePwd)
             {
@@ -596,6 +612,25 @@ namespace RHLauncher
         #endregion
 
         #region Button Events
+
+        private void LauncherForm_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                notifyIcon.Visible = true;
+            }
+        }
+
+        private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                // Restore the form and hide the NotifyIcon when clicked
+                Show();
+                WindowState = FormWindowState.Normal;
+                notifyIcon.Visible = false;
+            }
+        }
 
         private void MenuButton_MouseHover(object sender, EventArgs e)
         {
@@ -698,6 +733,7 @@ namespace RHLauncher
             StopButton.ImageIndex = 2;
         }
         #endregion
+
     }
 
 }

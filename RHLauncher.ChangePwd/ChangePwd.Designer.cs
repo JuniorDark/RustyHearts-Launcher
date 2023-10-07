@@ -67,6 +67,9 @@
             SubTitleLabelS2 = new Label();
             TitleLabelS2 = new Label();
             imageListTips = new ImageList(components);
+            imageListSendEmailBtn_ko = new ImageList(components);
+            imageListContinueBtn_ko = new ImageList(components);
+            imageListOKBtn_ko = new ImageList(components);
             Stage1Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)EmailPictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)CodePictureBox).BeginInit();
@@ -594,6 +597,33 @@
             imageListTips.Images.SetKeyName(0, "tips_error.png");
             imageListTips.Images.SetKeyName(1, "tips_ok.png");
             // 
+            // imageListSendEmailBtn_ko
+            // 
+            imageListSendEmailBtn_ko.ColorDepth = ColorDepth.Depth32Bit;
+            imageListSendEmailBtn_ko.ImageStream = (ImageListStreamer)resources.GetObject("imageListSendEmailBtn_ko.ImageStream");
+            imageListSendEmailBtn_ko.TransparentColor = Color.Transparent;
+            imageListSendEmailBtn_ko.Images.SetKeyName(0, "ChangePwwnd_button_email_normal_ko.png");
+            imageListSendEmailBtn_ko.Images.SetKeyName(1, "ChangePwwnd_button_email_active_ko.png");
+            imageListSendEmailBtn_ko.Images.SetKeyName(2, "ChangePwwnd_button_email_down_ko.png");
+            // 
+            // imageListContinueBtn_ko
+            // 
+            imageListContinueBtn_ko.ColorDepth = ColorDepth.Depth32Bit;
+            imageListContinueBtn_ko.ImageStream = (ImageListStreamer)resources.GetObject("imageListContinueBtn_ko.ImageStream");
+            imageListContinueBtn_ko.TransparentColor = Color.Transparent;
+            imageListContinueBtn_ko.Images.SetKeyName(0, "Registerwnd_button_continue_normal_ko.png");
+            imageListContinueBtn_ko.Images.SetKeyName(1, "Registerwnd_button_continue_active_ko.png");
+            imageListContinueBtn_ko.Images.SetKeyName(2, "Registerwnd_button_continue_down_ko.png");
+            // 
+            // imageListOKBtn_ko
+            // 
+            imageListOKBtn_ko.ColorDepth = ColorDepth.Depth32Bit;
+            imageListOKBtn_ko.ImageStream = (ImageListStreamer)resources.GetObject("imageListOKBtn_ko.ImageStream");
+            imageListOKBtn_ko.TransparentColor = Color.Transparent;
+            imageListOKBtn_ko.Images.SetKeyName(0, "messagewnd.button.ok.normal.png");
+            imageListOKBtn_ko.Images.SetKeyName(1, "messagewnd.button.ok.active.png");
+            imageListOKBtn_ko.Images.SetKeyName(2, "messagewnd.button.ok.down.png");
+            // 
             // ChangePwd
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -664,5 +694,8 @@
         private Label TimerLabel;
         private ImageList imageListContinueBtn;
         private Label PwdStrengthLabel;
+        private ImageList imageListSendEmailBtn_ko;
+        private ImageList imageListContinueBtn_ko;
+        private ImageList imageListOKBtn_ko;
     }
 }

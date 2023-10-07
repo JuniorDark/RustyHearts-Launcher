@@ -1,4 +1,5 @@
-﻿using RHLauncher.Helper;
+﻿using RHLauncher.DynamicLib;
+using RHLauncher.Helper;
 using RHLauncher.RHLauncher.Helper;
 using System.Text;
 
