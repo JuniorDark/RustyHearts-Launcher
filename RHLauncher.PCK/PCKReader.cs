@@ -1,13 +1,11 @@
-﻿using RHLauncher.DynamicLib;
-using RHLauncher.Helper;
+﻿using Ionic.Zlib;
 using RHLauncher.RHLauncher.Helper;
 using System.Text;
 
-namespace RHLauncher.PCK
+namespace RHLauncher.RHLauncher.PCK
 {
     public static class PCKReader
     {
-
         public static readonly byte[] BufferTable = new byte[]
         {
              0x30, 0x22, 0x41, 0xA8, 0x5B, 0xA6, 0x6A, 0x49, 0xBF, 0x53, 0x35, 0xE5, 0x9E, 0x0E, 0xEC, 0xB8, 0x5E, 0x15, 0x1F, 0xC1, 0x4F, 0xEC, 0x77, 0xE8, 0xB7, 0x4E, 0x87, 0xE6, 0xF5, 0x3C, 0xB3, 0x43
@@ -31,19 +29,20 @@ namespace RHLauncher.PCK
 
             compressedBytes = compressedBytes.Select((b, i) => (byte)(b ^ BufferTable[i & 0xFF])).ToArray();
 
-            int decompressedSize = (compressedBytes.Length << 4) - compressedBytes.Length;
-            byte[] decompressedBytes = new byte[decompressedSize];
-
-            int result = ZLibDll.Decompress(compressedBytes, compressedBytes.Length, decompressedBytes, ref decompressedSize);
-            if (result != 0) throw new Exception("Error decoding f00x.dat");
-
             List<PCKFile> pckFileList = new(100000);
-            using (MemoryStream memoryStream = new(decompressedBytes, 0, decompressedSize, false))
+            string fileName = string.Empty;
+
+            try
             {
-                using BinaryReader binaryReader = new(memoryStream);
+                using MemoryStream compressedStream = new(compressedBytes);
+                using ZlibStream deflateStream = new(compressedStream, CompressionMode.Decompress);
+                using MemoryStream decompressedStream = new();
+                deflateStream.CopyTo(decompressedStream);
+                decompressedStream.Seek(0, SeekOrigin.Begin);
+
+                using BinaryReader binaryReader = new(decompressedStream);
                 while (binaryReader.BaseStream.Position < binaryReader.BaseStream.Length)
                 {
-                    string fileName = string.Empty;
                     try
                     {
                         ushort nameLength = binaryReader.ReadUInt16();
@@ -75,11 +74,17 @@ namespace RHLauncher.PCK
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                string errorMessage = $"Error decompressing PCK file: {ex.Message}";
+                string errorLog = $"Error decompressing PCK file: {ex.Message}|{ex.StackTrace}";
+                Exception newEx = new(errorMessage, ex);
+                Exception newLogEx = new(errorLog, ex);
+                ExceptionHandler.HandleException(newEx, newLogEx);
+            }
 
             return pckFileList;
         }
 
-
     }
-
 }

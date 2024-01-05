@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace RHLauncher.Helper
+namespace RHLauncher.RHLauncher.Helper
 {
     public class FormUtils
     {

@@ -14,11 +14,11 @@ jobs:
         with:
           dotnet-version: '7.0.x'
       - name: Build
-        run: dotnet publish --configuration Release --self-contained false --runtime win-x86 /p:PublishSingleFile=true
+        run: dotnet publish --configuration Release --self-contained false --runtime win-x64 /p:PublishSingleFile=true
       - name: Zip output file
-        run: Compress-Archive -Path ./bin/Release/net7.0-windows7.0/win-x86/publish/Launcher.exe -DestinationPath Launcher.zip
+        run: Compress-Archive -Path ./bin/Release/net7.0-windows7.0/win-x64/publish/Launcher.exe -DestinationPath Launcher.zip
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Launcher
           path: Launcher.zip

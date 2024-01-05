@@ -7,11 +7,13 @@ However, it requires further development to improve functionality and
 ensure stability. Please check the GitHub repository for updates.
 */
 
+using RHLauncher.RHLauncher.i8n;
+
 namespace RHLauncher
 {
     internal static class Program
     {
-        private static readonly Mutex mutex = new(false, "Launcher");
+        private static readonly Mutex mutex = new(false, "RHLauncher");
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -29,7 +31,7 @@ namespace RHLauncher
             }
             else
             {
-                MessageBox.Show("Only one instance of the launcher can run at a time.");
+                MessageBox.Show(LocalizedStrings.LauncherAlreadyRunning, LocalizedStrings.Error);
             }
         }
     }

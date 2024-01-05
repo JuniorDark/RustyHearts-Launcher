@@ -2,12 +2,13 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace RHLauncher.Helper
+namespace RHLauncher.RHLauncher.Helper
 {
     public class RegistryHandler
     {
         private const string KEY_NAME = "RustyHearts\\UserInfo";
         private const string INSTALL_DIR_KEY = "InstallDirectory";
+        private const string TEMP_INSTALL_DIR_KEY = "TempInstallDirectory";
         private readonly RegistryKey key;
 
         public RegistryHandler()
@@ -56,6 +57,11 @@ namespace RHLauncher.Helper
             key.SetValue(INSTALL_DIR_KEY, directory ?? string.Empty);
         }
 
+        public void SaveTempInstallDirectory(string directory)
+        {
+            key.SetValue(TEMP_INSTALL_DIR_KEY, directory ?? string.Empty);
+        }
+
         public string GetInstallDirectory()
         {
             return key.GetValue(INSTALL_DIR_KEY)?.ToString() ?? string.Empty;
@@ -67,6 +73,20 @@ namespace RHLauncher.Helper
             if (!string.IsNullOrEmpty(value))
             {
                 key.DeleteValue(INSTALL_DIR_KEY);
+            }
+        }
+
+        public string GetTempInstallDirectory()
+        {
+            return key.GetValue(TEMP_INSTALL_DIR_KEY)?.ToString() ?? string.Empty;
+        }
+
+        public void ClearTempInstallDirectory()
+        {
+            var value = key.GetValue(TEMP_INSTALL_DIR_KEY)?.ToString();
+            if (!string.IsNullOrEmpty(value))
+            {
+                key.DeleteValue(TEMP_INSTALL_DIR_KEY);
             }
         }
 

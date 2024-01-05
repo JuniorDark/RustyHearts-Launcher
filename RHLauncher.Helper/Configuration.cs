@@ -6,7 +6,7 @@ public class Configuration
 
     public static readonly Configuration Default = new();
 
-    private readonly IniFile iniFile = new(DefaultIniFilePath);
+    public readonly IniFile iniFile = new(DefaultIniFilePath);
 
     public Configuration()
     {
@@ -26,6 +26,10 @@ public class Configuration
         ChangePasswordUrl = $"{apiUrl}/accountApi/changePassword";
         LauncherNewsUrl = $"{apiUrl}/launcher/news";
         AgreementUrl = $"{apiUrl}/launcher/agreement";
+
+        //Client download endpoints
+        ClientPartsListUrl = $"{apiUrl}/launcher/client/download/filelist.txt";
+        DownloadClientPartUrl = $"{apiUrl}/launcher/client/download";
 
         //Client update endpoints
         FileListUrl = $"{apiUrl}/launcher/patch/filelist.txt";
@@ -55,6 +59,8 @@ public class Configuration
     public string GetLauncherVersion { get; set; }
     public string UpdateLauncherVersion { get; set; }
     public string DownloadUpdateFileUrl { get; set; }
+    public string ClientPartsListUrl { get; set; }
+    public string DownloadClientPartUrl { get; set; }
     public string Lang { get; set; }
 }
 

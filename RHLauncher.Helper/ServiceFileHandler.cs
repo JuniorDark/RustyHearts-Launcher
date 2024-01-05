@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using RHLauncher.RHLauncher.i8n;
+using System.Security.Cryptography;
 
 namespace RHLauncher.RHLauncher.Helper
 {
@@ -37,13 +38,13 @@ namespace RHLauncher.RHLauncher.Helper
                 }
                 else
                 {
-                    MsgBoxForm.Show("Service.dat file does not exist. Please check if the Install Directory is correct.", LocalizedStrings.Error);
+                    MsgBoxForm.Show(LocalizedStrings.ServiceDatFileMissing, LocalizedStrings.Error);
                     return;
                 }
             }
             catch (Exception ex)
             {
-                MsgBoxForm.Show("An error occurred while updating service: " + ex.Message, LocalizedStrings.Error);
+                MsgBoxForm.Show(LocalizedStrings.ServiceUpdateError + ": " + ex.Message, LocalizedStrings.Error);
             }
         }
 

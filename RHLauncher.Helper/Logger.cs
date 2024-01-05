@@ -1,4 +1,4 @@
-namespace RHLauncher.Helper;
+namespace RHLauncher.RHLauncher.Helper;
 
 public class Logger
 {
@@ -13,10 +13,14 @@ public class Logger
         // Create log file with today's date
         logFilePath = Path.Combine(logFilePath, "Log-" + DateTime.Today.ToString("MM-dd-yyyy") + ".txt");
         FileInfo logFileInfo = new(logFilePath);
-        DirectoryInfo logDirInfo = new(logFileInfo.DirectoryName);
-        if (!logDirInfo.Exists)
+
+        if (logFileInfo.DirectoryName != null)
         {
-            logDirInfo.Create();
+            DirectoryInfo logDirInfo = new(logFileInfo.DirectoryName);
+            if (!logDirInfo.Exists)
+            {
+                logDirInfo.Create();
+            }
         }
 
         // Write log entry to file
@@ -28,4 +32,5 @@ public class Logger
         streamWriter.WriteLine("Message: {0}", message);
         streamWriter.WriteLine("---------------------------");
     }
+
 }

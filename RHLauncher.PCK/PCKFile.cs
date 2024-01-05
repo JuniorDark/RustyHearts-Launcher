@@ -1,4 +1,4 @@
-﻿namespace RHLauncher.PCK
+﻿namespace RHLauncher.RHLauncher.PCK
 {
     public class PCKFile
     {
@@ -11,10 +11,6 @@
         public uint Hash { get; private set; }
 
         public long Offset { get; private set; }
-
-        public bool IsChecked { get; set; }
-
-        public string[] PathElements { get { return Name.Split(new char[] { '\\' }); } }
 
         public PCKFile(string name, byte archive, int size, uint hash, long offset)
         {

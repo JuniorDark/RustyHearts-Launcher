@@ -27,11 +27,11 @@ Rusty Hearts Launcher is a custom launcher for the Rusty Hearts game client. It 
 * [FAQ](#faq)
 * [Credits](#credits)
 * [Support](#support)
-* [Roadmap](#roadmap)
 
 ## Features
+* Game Download: The launcher can download and install the client.
+* Game Update: The launcher can automatically download and install game updates.
 * Self-updating: The launcher can automatically update itself to the latest version.
-* Automatic game update: The launcher can automatically download and install updates.
 * Register account: Users can register a new account/change the password directly from the launcher.
 * News window: The launcher displays the latest news and updates about the game.
 
@@ -39,7 +39,6 @@ Rusty Hearts Launcher is a custom launcher for the Rusty Hearts game client. It 
 The launcher require the [Rusty Hearts API](https://github.com/JuniorDark/RustyHearts-API) to work. See the api documentation for instructions on setup.
 
 ### API URL
-
 In order for the launcher to work it need to be conected to the api. To change the URL address of the launcher API open the Config.ini (it will be created when opening the launcher for the first time).
 
 The default URL for the api can be changed on IniFile.cs
@@ -51,17 +50,20 @@ The client region can be set on Service on Config.ini
 * **chn** (Xunlei) - Only launcher support
 
 ### Launcher self-update
-
 In order for the launcher to automatically update itself, you need to use the launcher_info.ini in the `launcher_update` directory of the api. This file specifies the version of the launcher. After each update of the launcher, you need to change the version in the ini, as well in the launcher executable file.
 
-### Client patch
+### Client download
+In order to download the client, you need to use the `client\download` directory of the api.
 
+The tool for creating the client files is available in the repository: https://github.com/JuniorDark/RustyHearts-MIPTool
+
+### Client patch
 In order to create client patches, you need to use the `patch` directory of the api.
 
 The tool for creating the patch files is available in the repository: https://github.com/JuniorDark/RustyHearts-MIPTool
 
 ### Launcher Language
-The launcher language can be set on `Lang` on Config.ini 
+The launcher language can be changed on `Lang` on Config.ini or in the Config menu
 
 * **en** - English (en-US) default language
 * **ko** - Korean ("ko-KR) (Machine Translated)
@@ -97,12 +99,10 @@ Contributions from the community are welcome! If you encounter a bug or have a f
 
 ## Credits
 The following third-party libraries, tools, and resources are used in this project:
+* [DotNetZip](https://www.nuget.org/packages/DotNetZip)
 * [Microsoft.Web.WebView2](https://www.nuget.org/packages/Microsoft.Web.WebView2)
 * [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json)
+* [WindowsAPICodePack](https://www.nuget.org/packages/WindowsAPICodePack)
 
 ## Support
 If you need help with the launcher, please submit an issue on GitHub.
-
-## Roadmap
-* Add support for client download/repair
-* Improve performance and stability
