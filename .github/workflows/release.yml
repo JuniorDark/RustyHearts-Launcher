@@ -34,7 +34,7 @@ jobs:
       - name: Get version from compiled assembly
         id: version
         run: |
-          $version = (Get-Command "./publish/RustyHearts-Launcher_framework-dependent/Launcher.dll").FileVersionInfo.FileVersion
+          $version = (Get-Command "./publish/RustyHearts-Launcher_self-contained/Launcher.dll").FileVersionInfo.FileVersion
           echo "::set-output name=version::$version"
 
       # Create Release and Upload Assets using softprops/action-gh-release
