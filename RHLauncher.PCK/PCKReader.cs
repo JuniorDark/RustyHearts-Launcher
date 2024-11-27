@@ -1,4 +1,4 @@
-﻿using Ionic.Zlib;
+﻿using System.IO.Compression;
 using RHLauncher.RHLauncher.Helper;
 using System.Text;
 
@@ -35,7 +35,7 @@ namespace RHLauncher.RHLauncher.PCK
             try
             {
                 using MemoryStream compressedStream = new(compressedBytes);
-                using ZlibStream deflateStream = new(compressedStream, CompressionMode.Decompress);
+                using ZLibStream deflateStream = new(compressedStream, CompressionMode.Decompress);
                 using MemoryStream decompressedStream = new();
                 deflateStream.CopyTo(decompressedStream);
                 decompressedStream.Seek(0, SeekOrigin.Begin);

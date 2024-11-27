@@ -81,7 +81,7 @@ namespace RHLauncher
         {
             if (languageChanged)
             {
-                string? selectedLanguage = cbLauncherLanguage.SelectedItem.ToString();
+                string? selectedLanguage = cbLauncherLanguage.SelectedItem?.ToString();
                 string languageCode = GetLanguageCode(selectedLanguage);
 
                 if (languageCode != null)

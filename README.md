@@ -23,10 +23,8 @@ Rusty Hearts Launcher is a custom launcher for the Rusty Hearts game client. It 
 * [Prerequisites for Building Locally/Development](#prerequisites-for-building-locallydevelopment)
 * [System Requirements for Ready-to-use build](#system-requirements-for-ready-to-use-build)
 * [License](#license)
-* [Contributing](#contributing)
-* [FAQ](#faq)
+* [Building](#building)
 * [Credits](#credits)
-* [Support](#support)
 
 ## Features
 * Game Download: The launcher can download and install the client.
@@ -73,36 +71,37 @@ If you want to add a new language create a LocalizedStrings.<language>.resx with
 
 If you want to change the text on the buttons/images used in the launcher you can use the Photoshop .psd files included in the PSD Resources.rar
 
-## Prerequisites for Building Locally/Development
-The launcher is built in .NET 7 and as such, the packages listed below are required to create a local and development build of the launcher. Furthermore, it uses many submodules and packages outside of this, which will automatically be loaded when the user sets up a local environment of the application.
-* Visual Studio 2022 (Any Edition - 17.4 or later)
-* Windows 10 SDK (10.0.19043.0) or Windows 11 SDK (10.0.22000.0) via Visual Studio Installer
-* .NET: [.NET Core 7 SDK (7.0.100 or later)](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
+## Prerequisites for Development
+* Visual Studio 2022 (Any Edition - 17.12 or later)
+* Windows 10 SDK or Windows 11 SDK via Visual Studio Installer
+* .NET Core 9 SDK (9.0.100 or later)
 
-## System Requirements for Ready-to-use build
-* OS: Windows 10 1809 Update (build 17763) or later / Windows 11 (Any builds)
-* Architecture: x64/AMD64
+## Building
+
+If you wish to build the project yourself, follow these steps:
+
+### Step 1
+
+Install the [.NET 9.0 (or higher) SDK](https://dotnet.microsoft.com/download/dotnet/9.0).
+Make sure your SDK version is higher or equal to the required version specified. 
+
+### Step 2
+
+Either use `git clone https://github.com/JuniorDark/RustyHearts-Launcher` on the command line to clone the repository or use Code --> Download zip button to get the files.
+
+### Step 3
+
+To build Rusty Hearts Launcher, open a command prompt inside the project directory.
+You can quickly access it on Windows by holding shift in File Explorer, then right clicking and selecting `Open command window here`.
+Then type the following command: `dotnet build -c Release`.
+ 
+The built files will be found in the newly created `bin` build directory.
 
 ## License
 This project is licensed under the terms found in [`LICENSE-0BSD`](LICENSE).
 
-## Contributing
-Contributions from the community are welcome! If you encounter a bug or have a feature request, please submit an issue on GitHub. If you would like to contribute code, please fork the repository and submit a pull request.
-
-## FAQ
-* Q: How do I report a bug?
-  * A: Please submit an issue on GitHub with a detailed description of the bug and steps to reproduce it.
-* Q: How do I request a new feature?
-  * A: Please submit an issue on GitHub with a detailed description of the feature and why it would be useful.
-* Q: How do I contribute code?
-  * A: Please fork the repository, make your changes, and submit a pull request.
-
 ## Credits
 The following third-party libraries, tools, and resources are used in this project:
-* [DotNetZip](https://www.nuget.org/packages/DotNetZip)
 * [Microsoft.Web.WebView2](https://www.nuget.org/packages/Microsoft.Web.WebView2)
 * [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json)
 * [WindowsAPICodePack](https://www.nuget.org/packages/WindowsAPICodePack)
-
-## Support
-If you need help with the launcher, please submit an issue on GitHub.

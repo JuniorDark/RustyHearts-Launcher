@@ -1,9 +1,11 @@
 ﻿using RHLauncher.RHLauncher.i8n;
+using System.ComponentModel;
 
 namespace RHLauncher
 {
     public partial class MsgBoxForm : Form
     {
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new DialogResult DialogResult { get; private set; }
 
         public MsgBoxForm()

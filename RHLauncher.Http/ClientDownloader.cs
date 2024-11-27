@@ -1,4 +1,4 @@
-﻿using Ionic.Zip;
+﻿using System.IO.Compression;
 using RHLauncher.RHLauncher.Helper;
 using RHLauncher.RHLauncher.i8n;
 using System.Diagnostics;
@@ -51,10 +51,10 @@ namespace RHLauncher.RHLauncher.Http
                     Directory.CreateDirectory(downloadDir);
                 }
 
-                List<string> filesToBeDownloaded = new();
+                List<string> filesToBeDownloaded = [];
                 long totalBytesToDownload = 0L;
 
-                List<string> lines = filelistText.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                List<string> lines = [.. filelistText.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries)];
                 int totalLines = lines.Count;
                 int checkedFiles = 0;
 
@@ -146,14 +146,14 @@ namespace RHLauncher.RHLauncher.Http
 
         private static async Task<string> UnzipFilesAsync(string sourceDirectory, string destinationDirectory, IProgress<ProgressReport> progress, CancellationToken cancellationToken)
         {
-            string[] fileEntries = Directory.GetFiles(sourceDirectory, "*.zip.*").OrderBy(f => f).ToArray();
+            string[] fileEntries = [.. Directory.GetFiles(sourceDirectory, "*.zip.*").OrderBy(f => f)];
             string rhExeDirectoryPath = "";
 
             // Calculate total uncompressed size of all files in all zip archives
             long totalUncompressedSize = fileEntries.Sum(file =>
             {
-                using ZipFile zip = ZipFile.Read(file);
-                return zip.Entries.Sum(entry => entry.UncompressedSize);
+                using ZipArchive zip = ZipFile.OpenRead(file);
+                return zip.Entries.Sum(entry => entry.Length);
             });
             long totalExtracted = 0;
 
@@ -163,26 +163,26 @@ namespace RHLauncher.RHLauncher.Http
                 {
                     await Task.Run(() =>
                     {
-                        using ZipFile zip = ZipFile.Read(file);
-                        foreach (var entry in zip)
+                        using ZipArchive zip = ZipFile.OpenRead(file);
+                        foreach (var entry in zip.Entries)
                         {
                             cancellationToken.ThrowIfCancellationRequested();
 
-                            string destinationPath = Path.Combine(destinationDirectory, entry.FileName);
+                            string destinationPath = Path.Combine(destinationDirectory, entry.FullName);
                             string? directoryPath = Path.GetDirectoryName(destinationPath);
                             if (!string.IsNullOrEmpty(directoryPath) && !Directory.Exists(directoryPath))
                             {
                                 Directory.CreateDirectory(directoryPath);
                             }
 
-                            entry.Extract(destinationDirectory, ExtractExistingFileAction.OverwriteSilently);
-                            totalExtracted += entry.UncompressedSize;
+                            entry.ExtractToFile(destinationPath, true);
+                            totalExtracted += entry.Length;
                             cancellationToken.ThrowIfCancellationRequested();
 
                             ProgressReporter.ReportUnzipProgress(progress, totalExtracted, totalUncompressedSize, cancellationToken);
 
                             // Check if the current entry is "rustyhearts.exe" and store its directory path
-                            if (entry.FileName.EndsWith("rustyhearts.exe", StringComparison.OrdinalIgnoreCase))
+                            if (entry.FullName.EndsWith("rustyhearts.exe", StringComparison.OrdinalIgnoreCase))
                             {
                                 rhExeDirectoryPath = Path.GetDirectoryName(destinationPath) ?? "";
                             }
@@ -217,7 +217,5 @@ namespace RHLauncher.RHLauncher.Http
                 throw new FileNotFoundException($"{LocalizedStrings.ClientFolderExeErrorMessage}");
             }
         }
-
-
     }
 }
