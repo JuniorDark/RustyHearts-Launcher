@@ -1,8 +1,8 @@
-﻿using System.IO.Compression;
-using RHLauncher.RHLauncher.Helper;
+﻿using RHLauncher.RHLauncher.Helper;
 using RHLauncher.RHLauncher.i8n;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO.Compression;
 using System.Net;
 
 namespace RHLauncher.RHLauncher.Http
@@ -152,8 +152,11 @@ namespace RHLauncher.RHLauncher.Http
             // Calculate total uncompressed size of all files in all zip archives
             long totalUncompressedSize = fileEntries.Sum(file =>
             {
-                using ZipArchive zip = ZipFile.OpenRead(file);
-                return zip.Entries.Sum(entry => entry.Length);
+                using FileStream fs = new(file, FileMode.Open, FileAccess.Read);
+                using ZipArchive zip = new(fs, ZipArchiveMode.Read);
+
+                static long entryLength(ZipArchiveEntry entry) => entry.Length;
+                return zip.Entries.Sum(entryLength);
             });
             long totalExtracted = 0;
 
@@ -163,7 +166,8 @@ namespace RHLauncher.RHLauncher.Http
                 {
                     await Task.Run(() =>
                     {
-                        using ZipArchive zip = ZipFile.OpenRead(file);
+                        using FileStream fs = new(file, FileMode.Open, FileAccess.Read);
+                        using ZipArchive zip = new(fs, ZipArchiveMode.Read);
                         foreach (var entry in zip.Entries)
                         {
                             cancellationToken.ThrowIfCancellationRequested();
@@ -175,7 +179,7 @@ namespace RHLauncher.RHLauncher.Http
                                 Directory.CreateDirectory(directoryPath);
                             }
 
-                            entry.ExtractToFile(destinationPath, true);
+                            entry.ExtractToFile(destinationPath, overwrite: true);
                             totalExtracted += entry.Length;
                             cancellationToken.ThrowIfCancellationRequested();
 
