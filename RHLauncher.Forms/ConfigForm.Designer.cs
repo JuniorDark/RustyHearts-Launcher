@@ -40,6 +40,8 @@
             OkButton = new Button();
             VersionLabel = new Label();
             toolTip = new ToolTip(components);
+            ServiceLabel = new Label();
+            cbLauncherService = new ComboBox();
             SuspendLayout();
             // 
             // CloseButton
@@ -88,7 +90,7 @@
             TitleLabel.AutoEllipsis = true;
             TitleLabel.AutoSize = true;
             TitleLabel.BackColor = Color.Transparent;
-            TitleLabel.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            TitleLabel.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             TitleLabel.ForeColor = Color.White;
             TitleLabel.ImageAlign = ContentAlignment.TopRight;
             TitleLabel.ImeMode = ImeMode.NoControl;
@@ -125,7 +127,7 @@
             LanguageLabel.AutoEllipsis = true;
             LanguageLabel.AutoSize = true;
             LanguageLabel.BackColor = Color.Transparent;
-            LanguageLabel.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            LanguageLabel.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             LanguageLabel.ForeColor = Color.White;
             LanguageLabel.ImageAlign = ContentAlignment.TopRight;
             LanguageLabel.ImeMode = ImeMode.NoControl;
@@ -161,7 +163,7 @@
             VersionLabel.AutoSize = true;
             VersionLabel.BackColor = Color.Transparent;
             VersionLabel.Cursor = Cursors.Hand;
-            VersionLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            VersionLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             VersionLabel.ForeColor = Color.White;
             VersionLabel.Location = new Point(5, 248);
             VersionLabel.Name = "VersionLabel";
@@ -171,6 +173,34 @@
             toolTip.SetToolTip(VersionLabel, "Click to open github repository");
             VersionLabel.Click += VersionLabel_Click;
             // 
+            // ServiceLabel
+            // 
+            ServiceLabel.Anchor = AnchorStyles.None;
+            ServiceLabel.AutoEllipsis = true;
+            ServiceLabel.AutoSize = true;
+            ServiceLabel.BackColor = Color.Transparent;
+            ServiceLabel.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            ServiceLabel.ForeColor = Color.White;
+            ServiceLabel.ImageAlign = ContentAlignment.TopRight;
+            ServiceLabel.ImeMode = ImeMode.NoControl;
+            ServiceLabel.Location = new Point(294, 119);
+            ServiceLabel.Name = "ServiceLabel";
+            ServiceLabel.Size = new Size(59, 20);
+            ServiceLabel.TabIndex = 18;
+            ServiceLabel.Text = "Service";
+            ServiceLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // cbLauncherService
+            // 
+            cbLauncherService.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbLauncherService.FormattingEnabled = true;
+            cbLauncherService.Items.AddRange(new object[] { "JPN", "USA", "CHN", "JPN_BETA", "USA_BETA", "CHN_BETA" });
+            cbLauncherService.Location = new Point(254, 142);
+            cbLauncherService.Name = "cbLauncherService";
+            cbLauncherService.Size = new Size(145, 23);
+            cbLauncherService.TabIndex = 17;
+            cbLauncherService.SelectedIndexChanged += CbLauncherService_SelectedIndexChanged;
+            // 
             // ConfigForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -178,6 +208,8 @@
             BackColor = Color.Magenta;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(646, 272);
+            Controls.Add(ServiceLabel);
+            Controls.Add(cbLauncherService);
             Controls.Add(VersionLabel);
             Controls.Add(OkButton);
             Controls.Add(LanguageLabel);
@@ -210,5 +242,7 @@
         private Button OkButton;
         private Label VersionLabel;
         private ToolTip toolTip;
+        private Label ServiceLabel;
+        private ComboBox cbLauncherService;
     }
 }

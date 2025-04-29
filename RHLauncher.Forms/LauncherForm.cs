@@ -21,8 +21,8 @@ namespace RHLauncher
     public partial class LauncherForm : Form
     {
         private RegistryHandler registryHandler = new();
-        public string? installDirectory;
-        public string? tempInstallDirectory;
+        private string? installDirectory;
+        private string? tempInstallDirectory;
         private static readonly string DefaultIniFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config.ini");
         private readonly IniFile _iniFile = new(DefaultIniFilePath);
         private readonly string _windyCode;
@@ -487,10 +487,6 @@ namespace RHLauncher
             }
         }
 
-        public class ServerStatusResponse
-        {
-            public string? Status { get; set; }
-        }
         #endregion
 
         #region Button Click Events
@@ -665,10 +661,6 @@ namespace RHLauncher
                 if (!string.IsNullOrEmpty(installDirectory))
                 {
                     Process.Start("explorer.exe", installDirectory);
-                }
-                else
-                {
-
                 }
             }
             catch (Exception ex)
@@ -861,9 +853,15 @@ namespace RHLauncher
                 switch (service.ToLower())
                 {
                     case "usa":
+                    case "usa_beta":
                         arguments = "server=" + Configuration.Default.GateXMLUrl;
                         break;
+                    case "jpn":
+                    case "jpn_beta":
+                        arguments = $"-serverurl{Configuration.Default.GateInfoUrl}";
+                        break;
                     case "chn":
+                    case "chn_beta":
                         arguments = $"-serverurl{Configuration.Default.GateInfoUrl} id={_windyCode} password={_password}";
                         break;
                     default:
@@ -931,7 +929,7 @@ namespace RHLauncher
                         {
                             foreach (FileInfo file in directoryInfo.GetFiles())
                             {
-                                if (file.Name.ToLower() != "launcher.exe" && file.Name.ToLower() != "config.ini")
+                                if (!file.Name.Equals("launcher.exe", StringComparison.CurrentCultureIgnoreCase) && !file.Name.Equals("config.ini", StringComparison.CurrentCultureIgnoreCase))
                                 {
                                     file.Delete();
                                 }
@@ -1056,8 +1054,8 @@ namespace RHLauncher
 
         private static Image[] LoadImages()
         {
-            return new Image[]
-            {
+            return
+            [
                 Properties.Resources.character_select_cut_angela,
                 Properties.Resources.character_select_cut_edgar,
                 Properties.Resources.character_select_cut_frantz,
@@ -1067,7 +1065,7 @@ namespace RHLauncher
                 Properties.Resources.character_select_cut_natasha,
                 Properties.Resources.character_select_cut_roselle,
                 Properties.Resources.character_select_cut_tude
-            };
+            ];
         }
 
         private static void HidePanel(Panel panel)
@@ -1093,6 +1091,7 @@ namespace RHLauncher
             Exception newLogEx = new(errorLog, ex);
             ExceptionHandler.HandleException(newEx, newLogEx);
         }
+
         #endregion
 
     }

@@ -243,6 +243,12 @@
   <data name="GameSettings" xml:space="preserve">
     <value>Game Settings</value>
   </data>
+  <data name="HttpResponseNull" xml:space="preserve">
+    <value>Failed to process server response.</value>
+  </data>
+  <data name="HttpResponseParseError" xml:space="preserve">
+    <value>Failed to parse server response.</value>
+  </data>
   <data name="Info" xml:space="preserve">
     <value>Info</value>
   </data>
@@ -343,7 +349,7 @@
     <value>Enter the new password</value>
   </data>
   <data name="NewPasswordDesc" xml:space="preserve">
-    <value>6-16 characters</value>
+    <value>8-16 characters</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>No</value>
@@ -373,7 +379,7 @@
     <value>Password cannot be empty!</value>
   </data>
   <data name="PwdDescLabelSize" xml:space="preserve">
-    <value>Password must be between 6-16 characters!</value>
+    <value>Password must be between 8-16 characters!</value>
   </data>
   <data name="PwdStrengthLabelMedium" xml:space="preserve">
     <value>Medium</value>
@@ -422,6 +428,9 @@
   </data>
   <data name="ServerOffline" xml:space="preserve">
     <value>Cannot connect to the game server.</value>
+  </data>
+  <data name="Service" xml:space="preserve">
+    <value>Service</value>
   </data>
   <data name="ServiceDatFileMissing" xml:space="preserve">
     <value>Could not find Service.dat. Please check if the Install Directory is correct.</value>

@@ -243,6 +243,12 @@
   <data name="GameSettings" xml:space="preserve">
     <value>게임 설정</value>
   </data>
+  <data name="HttpResponseNull" xml:space="preserve">
+    <value>서버 응답을 처리하지 못했습니다.</value>
+  </data>
+  <data name="HttpResponseParseError" xml:space="preserve">
+    <value>서버 응답을 구문 분석하는 데 실패했습니다.</value>
+  </data>
   <data name="Info" xml:space="preserve">
     <value>정보</value>
   </data>
@@ -343,7 +349,7 @@
     <value>새 비밀번호를 입력하세요</value>
   </data>
   <data name="NewPasswordDesc" xml:space="preserve">
-    <value>6~16자</value>
+    <value>8~16자</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>아니요</value>
@@ -373,7 +379,7 @@
     <value>비밀번호는 비워둘 수 없습니다!</value>
   </data>
   <data name="PwdDescLabelSize" xml:space="preserve">
-    <value>비밀번호는 6~16자 사이여야 합니다!</value>
+    <value>비밀번호는 8~16자 사이여야 합니다!</value>
   </data>
   <data name="PwdStrengthLabelMedium" xml:space="preserve">
     <value>매질</value>
@@ -422,6 +428,9 @@
   </data>
   <data name="ServerOffline" xml:space="preserve">
     <value>게임 서버에 연결할 수 없습니다.</value>
+  </data>
+  <data name="Service" xml:space="preserve">
+    <value>서비스</value>
   </data>
   <data name="ServiceDatFileMissing" xml:space="preserve">
     <value>Service.dat를 찾을 수 없습니다. 설치 디렉터리가 올바른지 확인하세요.</value>

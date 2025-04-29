@@ -439,6 +439,24 @@ namespace RHLauncher.RHLauncher.i8n {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to process server response..
+        /// </summary>
+        public static string HttpResponseNull {
+            get {
+                return ResourceManager.GetString("HttpResponseNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to parse server response..
+        /// </summary>
+        public static string HttpResponseParseError {
+            get {
+                return ResourceManager.GetString("HttpResponseParseError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Info.
         /// </summary>
         public static string Info {
@@ -736,7 +754,7 @@ namespace RHLauncher.RHLauncher.i8n {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 6-16 characters.
+        ///   Looks up a localized string similar to 8-16 characters.
         /// </summary>
         public static string NewPasswordDesc {
             get {
@@ -826,7 +844,7 @@ namespace RHLauncher.RHLauncher.i8n {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password must be between 6-16 characters!.
+        ///   Looks up a localized string similar to Password must be between 8-16 characters!.
         /// </summary>
         public static string PwdDescLabelSize {
             get {
@@ -975,6 +993,15 @@ namespace RHLauncher.RHLauncher.i8n {
         public static string ServerOffline {
             get {
                 return ResourceManager.GetString("ServerOffline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service.
+        /// </summary>
+        public static string Service {
+            get {
+                return ResourceManager.GetString("Service", resourceCulture);
             }
         }
         

@@ -10,20 +10,20 @@ public class Configuration
 
     public Configuration()
     {
-        string apiUrl = iniFile.ReadValue("Info", "LoginURL");
+        string apiUrl = iniFile.ReadValue("Info", "ServerURL");
 
         //Client endpoints
-        GateXMLUrl = $"{apiUrl}/serverApi/gateway";
-        GateInfoUrl = $"{apiUrl}/serverApi/gateway/info";
-        GateStatusUrl = $"{apiUrl}/serverApi/gateway/status";
+        GateXMLUrl = $"{apiUrl}/launcher/GetGatewayAction";
+        GateInfoUrl = $"{apiUrl}/launcher/GetGatewayAction/info";
+        GateStatusUrl = $"{apiUrl}/launcher/GetGatewayAction/status";
 
         //Launcher endpoints
-        LoginUrl = $"{apiUrl}/accountApi/login";
-        RegisterUrl = $"{apiUrl}/accountApi/register";
-        SendCodeUrl = $"{apiUrl}/accountApi/sendVerificationEmail";
-        VerifyCodeUrl = $"{apiUrl}/accountApi/codeVerification";
-        SendPasswordCodeUrl = $"{apiUrl}/accountApi/sendPasswordResetEmail";
-        ChangePasswordUrl = $"{apiUrl}/accountApi/changePassword";
+        LoginUrl = $"{apiUrl}/launcher/LoginAction";
+        RegisterUrl = $"{apiUrl}/launcher/SignupAction";
+        SendCodeUrl = $"{apiUrl}/launcher/SendVerificationEmailAction";
+        VerifyCodeUrl = $"{apiUrl}/launcher/VerifyCodeAction";
+        SendPasswordCodeUrl = $"{apiUrl}/launcher/SendPasswordResetEmailAction";
+        ChangePasswordUrl = $"{apiUrl}/launcher/ResetPasswordAction";
         LauncherNewsUrl = $"{apiUrl}/launcher/news";
         AgreementUrl = $"{apiUrl}/launcher/agreement";
 
@@ -36,12 +36,12 @@ public class Configuration
         DownloadUpdateFileUrl = $"{apiUrl}/launcher/patch";
 
         //Launcher update endpoints
-        GetLauncherVersion = $"{apiUrl}/launcherApi/launcherUpdater/getLauncherVersion";
-        UpdateLauncherVersion = $"{apiUrl}/launcherApi/launcherUpdater/updateLauncherVersion";
+        GetLauncherVersion = $"{apiUrl}/launcherAction/getLauncherVersion";
+        UpdateLauncherVersion = $"{apiUrl}/launcherAction/updateLauncherVersion";
 
         //Launcher settings
-        string lang = iniFile.ReadValue("Launcher", "Lang");
-        Lang = lang;
+        Lang = iniFile.ReadValue("Launcher", "Lang");
+        Service = iniFile.ReadValue("Info", "Service");
     }
 
     public string GateXMLUrl { get; set; }
@@ -62,5 +62,6 @@ public class Configuration
     public string ClientPartsListUrl { get; set; }
     public string DownloadClientPartUrl { get; set; }
     public string Lang { get; set; }
+    public string Service { get; set; }
 }
 

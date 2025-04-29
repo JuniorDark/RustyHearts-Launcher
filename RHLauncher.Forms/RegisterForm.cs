@@ -1,4 +1,5 @@
-﻿using RHLauncher.RHLauncher.Helper;
+﻿using Newtonsoft.Json;
+using RHLauncher.RHLauncher.Helper;
 using RHLauncher.RHLauncher.i8n;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
@@ -7,11 +8,11 @@ namespace RHLauncher
 {
     public partial class RegisterForm : Form
     {
-        public string SendCodeUrl = Configuration.Default.SendCodeUrl;
-        public string AgreementUrl = Configuration.Default.AgreementUrl;
-        public string VerifyCodeUrl = Configuration.Default.VerifyCodeUrl;
-        public string RegisterUrl = Configuration.Default.RegisterUrl;
-        public string Lang = Configuration.Default.Lang;
+        private readonly string SendCodeUrl = Configuration.Default.SendCodeUrl;
+        private readonly string AgreementUrl = Configuration.Default.AgreementUrl;
+        private readonly string VerifyCodeUrl = Configuration.Default.VerifyCodeUrl;
+        private readonly string RegisterUrl = Configuration.Default.RegisterUrl;
+        private readonly string Lang = Configuration.Default.Lang;
         private List<Button>? buttons;
         private List<ImageList>? imageLists;
         private Dictionary<string, List<ImageList>>? languageImageLists;
@@ -55,16 +56,16 @@ namespace RHLauncher
         private void LoadLocalizedStrings()
         {
             // Initialize buttons and image lists
-            buttons = new List<Button> { ContinueButtonS1, SendEmailButton, ContinueButtonS2 };
-            imageLists = new List<ImageList> { imageListContinueBtn, imageListSendEmailBtn, imageListContinueBtn };
+            buttons = [ContinueButtonS1, SendEmailButton, ContinueButtonS2];
+            imageLists = [imageListContinueBtn, imageListSendEmailBtn, imageListContinueBtn];
 
             // Initialize language-specific image lists
             languageImageLists = new Dictionary<string, List<ImageList>>
-        {
-            { "en", new List<ImageList> { imageListContinueBtn, imageListSendEmailBtn, imageListContinueBtn } }, // English image lists
-            { "ko", new List<ImageList> { imageListContinueBtn_ko, imageListSendEmailBtn_ko, imageListContinueBtn_ko } }, // Korean image lists
-            // Add other languages and their respective image lists here
-        };
+            {
+                { "en", new List<ImageList> { imageListContinueBtn, imageListSendEmailBtn, imageListContinueBtn } }, // English image lists
+                { "ko", new List<ImageList> { imageListContinueBtn_ko, imageListSendEmailBtn_ko, imageListContinueBtn_ko } }, // Korean image lists
+                // Add other languages and their respective image lists here
+            };
 
             // Load the appropriate resource file based on the selected language
             LocalizationHelper.LoadLocalizedStrings(Lang, buttons, imageLists, languageImageLists);
@@ -88,18 +89,26 @@ namespace RHLauncher
         private async Task<string> SendEmailRequestAsync()
         {
             using HttpClient client = new();
-            using HttpResponseMessage response = await client.PostAsync(SendCodeUrl, new FormUrlEncodedContent(new[]
-            {
+            using HttpResponseMessage response = await client.PostAsync(SendCodeUrl, new FormUrlEncodedContent(
+            [
             new KeyValuePair<string, string>("email", EmailTextBox.Text),
 
-        }));
-
+        ]));
+            response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
 
         private void HandleSendEmailResponse(string response)
         {
-            switch (response)
+            HttpResponse? httpResponse = JsonConvert.DeserializeObject<HttpResponse>(response);
+
+            if (httpResponse == null)
+            {
+                MsgBoxForm.Show(LocalizedStrings.Error + $": {LocalizedStrings.HttpResponseNull}", LocalizedStrings.Error);
+                return;
+            }
+
+            switch (httpResponse.Result)
             {
                 case "EmailSent":
                     SendEmailButton.Enabled = false;
@@ -107,6 +116,7 @@ namespace RHLauncher
                     break;
                 case "AccountExists":
                     MsgBoxForm.Show(LocalizedStrings.AccountEmailExists, LocalizedStrings.Info);
+                    ResetSendEmailButton();
                     break;
                 case "ValidVerificationCode":
                     // Hide the first panel and show the second panel
@@ -141,51 +151,65 @@ namespace RHLauncher
             // If the timer has finished counting down, stop the timer and enable the ResendEmailButton
             if (secondsLeft == 0)
             {
-                resendTimer.Stop();
-                SendEmailButton.Enabled = true;
-                TimerLabel.Text = "";
+                ResetSendEmailButton();
             }
+        }
+
+        private void ResetSendEmailButton()
+        {
+            resendTimer.Stop();
+            SendEmailButton.Enabled = true;
+            TimerLabel.Text = "";
         }
 
         private async Task<string> VerifyCodeSendRequestAsync()
         {
             using HttpClient client = new();
-            using HttpResponseMessage response = await client.PostAsync(VerifyCodeUrl, new FormUrlEncodedContent(new[]
-            {
+            using HttpResponseMessage response = await client.PostAsync(VerifyCodeUrl, new FormUrlEncodedContent(
+            [
             new KeyValuePair<string, string>("email", EmailTextBox.Text),
-            new KeyValuePair<string, string>("verification_code", CodeTextBox.Text),
-            new KeyValuePair<string, string>("verification_code_type", "Account"),
+            new KeyValuePair<string, string>("verificationCode", CodeTextBox.Text),
+            new KeyValuePair<string, string>("verificationCodeType", "Account"),
 
-        }));
-
+        ]));
+            response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
 
         private async Task<string> SendRequestAsync()
         {
             using HttpClient client = new();
-            using HttpResponseMessage response = await client.PostAsync(RegisterUrl, new FormUrlEncodedContent(new[]
-            {
-            new KeyValuePair<string, string>("windyCode", UsernameTextBox.Text),
+            using HttpResponseMessage response = await client.PostAsync(RegisterUrl, new FormUrlEncodedContent(
+            [
+            new KeyValuePair<string, string>("username", UsernameTextBox.Text),
             new KeyValuePair<string, string>("email", EmailTextBox.Text),
-            new KeyValuePair<string, string>("password", PasswordTextBox.Text)
-        }));
-
+            new KeyValuePair<string, string>("password", PasswordTextBox.Text),
+            new KeyValuePair<string, string>("verificationCode", CodeTextBox.Text)
+        ]));
+            response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
 
         private void HandleResponse(string response)
         {
-            switch (response)
+            HttpResponse? accounResponse = JsonConvert.DeserializeObject<HttpResponse>(response);
+
+            if (accounResponse == null)
             {
-                case "Success":
+                MsgBoxForm.Show(LocalizedStrings.Error + $": {LocalizedStrings.HttpResponseNull}", LocalizedStrings.Error);
+                return;
+            }
+
+            switch (accounResponse.Result)
+            {
+                case "AccountCreated":
                     MsgBoxForm.Show(LocalizedStrings.AccountCreateSuccess, LocalizedStrings.RegisterWindow);
                     Close();
                     break;
-                case "AccountExists":
-                    MsgBoxForm.Show(LocalizedStrings.AccountExists, LocalizedStrings.Info);
+                case "EmailExists":
+                    MsgBoxForm.Show(LocalizedStrings.AccountEmailExists, LocalizedStrings.Info);
                     break;
-                case "WindyCodeExists":
+                case "UsernameExists":
                     MsgBoxForm.Show(LocalizedStrings.WindyCodeExists, LocalizedStrings.Error);
                     break;
                 case "InvalidUserNameFormat":
@@ -195,7 +219,7 @@ namespace RHLauncher
                     MsgBoxForm.Show(LocalizedStrings.InvalidEmailFormat, LocalizedStrings.Error);
                     break;
                 default:
-                    MsgBoxForm.Show($"{LocalizedStrings.Error}: {response}", LocalizedStrings.Error);
+                    MsgBoxForm.Show($"{LocalizedStrings.Error}: " + accounResponse.Message, LocalizedStrings.Error);
                     break;
             }
 
@@ -375,7 +399,7 @@ namespace RHLauncher
             string password = PasswordTextBox.Text;
 
             // Check for minimum length and maximum length
-            if (password.Length < 6 || password.Length > 16)
+            if (password.Length < 8 || password.Length > 16)
             {
                 PwdDescLabel.Text = LocalizedStrings.PwdDescLabelSize;
                 PwdDescLabel.ForeColor = Color.Red;

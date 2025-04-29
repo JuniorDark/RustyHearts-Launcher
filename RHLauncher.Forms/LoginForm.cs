@@ -10,10 +10,10 @@ namespace RHLauncher
     {
         private RegistryHandler registryHandler = new();
 
-        public string windyCode = string.Empty;
-        public string password = string.Empty;
-        public string LoginUrl = Configuration.Default.LoginUrl;
-        public string Lang = Configuration.Default.Lang;
+        private string windyCode = string.Empty;
+        private string password = string.Empty;
+        private readonly string LoginUrl = Configuration.Default.LoginUrl;
+        private readonly string Lang = Configuration.Default.Lang;
         private List<Button>? buttons;
         private List<ImageList>? imageLists;
         private Dictionary<string, List<ImageList>>? languageImageLists;
@@ -42,8 +42,8 @@ namespace RHLauncher
         private void LoadLocalizedStrings()
         {
             // Initialize buttons and image lists
-            buttons = new List<Button> { LoginButton, RegisterButton };
-            imageLists = new List<ImageList> { imageListLogin, imageListRegister };
+            buttons = [LoginButton, RegisterButton];
+            imageLists = [imageListLogin, imageListRegister];
 
             // Initialize language-specific image lists
             languageImageLists = new Dictionary<string, List<ImageList>>
@@ -171,12 +171,12 @@ namespace RHLauncher
         private async Task<string> SendLoginRequestAsync()
         {
             using HttpClient client = new();
-            using HttpResponseMessage response = await client.PostAsync(LoginUrl, new FormUrlEncodedContent(new[]
-            {
+            using HttpResponseMessage response = await client.PostAsync(LoginUrl, new FormUrlEncodedContent(
+            [
             new KeyValuePair<string, string>("account", UsernameTextBox.Text),
             new KeyValuePair<string, string>("password", PasswordTextBox.Text)
-            }));
-
+            ]));
+            response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
 
@@ -184,52 +184,63 @@ namespace RHLauncher
         {
             try
             {
-                Dictionary<string, string>? loginResponse = JsonConvert.DeserializeObject<Dictionary<string, string>>(response);
+                var loginResponse = JsonConvert.DeserializeObject<LoginResponse>(response);
 
-                if (loginResponse != null)
+                if (loginResponse == null)
                 {
-                    if (loginResponse.TryGetValue("Result", out var result))
-                    {
-                        switch (result)
+                    MsgBoxForm.Show(LocalizedStrings.Error + $": {LocalizedStrings.HttpResponseNull}", LocalizedStrings.Error);
+                    return;
+                }
+
+                switch (loginResponse.Result)
+                {
+                    case "LoginSuccess":
+                        if (!string.IsNullOrEmpty(loginResponse.WindyCode) && !string.IsNullOrEmpty(loginResponse.Token))
                         {
-                            case "LoginSuccess":
-                                windyCode = loginResponse["WindyCode"];
-                                password = loginResponse["Token"];
-                                progressBarLogin.Visible = false;
-                                Hide();
-                                notifyIcon.Visible = false;
-                                LauncherForm launcherForm = new(windyCode, password);
-                                launcherForm.ShowDialog();
-                                break;
-                            case "InvalidCredentials":
-                                MsgBoxForm.Show(LocalizedStrings.LoginInvalidCredentials, LocalizedStrings.LoginInfoTitle);
-                                break;
-                            case "InvalidUsernameFormat":
-                                MsgBoxForm.Show(LocalizedStrings.LoginInvalidUsernameFormat, LocalizedStrings.LoginInfoTitle);
-                                break;
-                            case "AccountNotFound":
-                                MsgBoxForm.Show(LocalizedStrings.LoginInvalidCredentials, LocalizedStrings.LoginInfoTitle);
-                                break;
-                            case "Locked":
-                                MsgBoxForm.Show(LocalizedStrings.LoginLocked, LocalizedStrings.LoginInfoTitle);
-                                break;
-                            case "TooManyAttempts":
-                                MsgBoxForm.Show(LocalizedStrings.LoginTooManyAttempts, LocalizedStrings.LoginInfoTitle);
-                                break;
-                            default:
-                                MsgBoxForm.Show(LocalizedStrings.Error + result, LocalizedStrings.Error);
-                                break;
+                            windyCode = loginResponse.WindyCode;
+                            password = loginResponse.Token;
+                            progressBarLogin.Visible = false;
+                            Hide();
+                            notifyIcon.Visible = false;
+                            LauncherForm launcherForm = new(windyCode, password);
+                            launcherForm.ShowDialog();
                         }
-                    }
-                    else
-                    {
-                        MsgBoxForm.Show(LocalizedStrings.Error + "Response does not contain a Result field.", LocalizedStrings.Error);
-                    }
+                        else
+                        {
+                            MsgBoxForm.Show(LocalizedStrings.Error + " Missing token or windyCode.", LocalizedStrings.Error);
+                        }
+                        break;
+
+                    case "InvalidCredentials":
+                    case "AccountNotFound":
+                        MsgBoxForm.Show(LocalizedStrings.LoginInvalidCredentials, LocalizedStrings.LoginInfoTitle);
+                        break;
+
+                    case "Locked":
+                        MsgBoxForm.Show(LocalizedStrings.LoginLocked, LocalizedStrings.LoginInfoTitle);
+                        break;
+
+                    case "TooManyAttempts":
+                        MsgBoxForm.Show(LocalizedStrings.LoginTooManyAttempts, LocalizedStrings.LoginInfoTitle);
+                        break;
+
+                    case "InvalidRequest":
+                    case "ServerError":
+                        if (!string.IsNullOrEmpty(loginResponse.Message))
+                        {
+                            MsgBoxForm.Show(loginResponse.Message, LocalizedStrings.Error);
+                        }
+                        else
+                        {
+                            MsgBoxForm.Show(LocalizedStrings.Error + ": " + loginResponse.Result, LocalizedStrings.Error);
+                        }
+                        break;
+
+                    default:
+                        MsgBoxForm.Show(LocalizedStrings.Error + ": " + loginResponse.Result, LocalizedStrings.Error);
+                        break;
                 }
-                else
-                {
-                    MsgBoxForm.Show(LocalizedStrings.Error + "Failed to deserialize the response.", LocalizedStrings.Error);
-                }
+
             }
             catch (Exception ex)
             {

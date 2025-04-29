@@ -21,9 +21,9 @@ namespace RHLauncher.RHLauncher.Helper
             if (!File.Exists(_iniFilePath))
             {
                 //Default api url
-                WritePrivateProfileString("Info", "LoginURL", "http://localhost:3000", _iniFilePath);
+                WritePrivateProfileString("Info", "ServerURL", "http://127.0.0.1", _iniFilePath);
                 //Default client service
-                WritePrivateProfileString("Info", "Service", "usa", _iniFilePath);
+                WritePrivateProfileString("Info", "Service", "jpn", _iniFilePath);
                 //Default launcher language
                 WritePrivateProfileString("Launcher", "Lang", "en", _iniFilePath);
             }
