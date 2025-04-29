@@ -42,8 +42,9 @@ In order for the launcher to work it need to be conected to the api. To change t
 The default URL for the api can be changed on IniFile.cs
 
 ### Client region
-The client region can be set on Service on Config.ini 
+The client region can be set on Config.ini or in the Config menu
 
+* **Jpn** (SEGA) - Full api support
 * **usa** (PWE) - Full api support
 * **chn** (Xunlei) - Only launcher support
 
