@@ -23,7 +23,7 @@ jobs:
       - name: Zip output files (No Self-Contained)
         run: Compress-Archive -Path "./publish/RustyHearts-Launcher_framework-dependent" -DestinationPath RustyHearts-Launcher.zip
       - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: Launcher
           path: RustyHearts-Launcher.zip
